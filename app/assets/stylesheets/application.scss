@@ -1,0 +1,40 @@
+@import 'bootstrap';
+@import "font-awesome";
+
+body {
+  position:relative;
+}
+nav {
+  position:absolute;
+  top:20px;
+  left:820px;
+  li {
+    float:left;
+    margin-left: 20px;
+    a {
+      position:relative;
+      color:#02103f;
+      font-size: 32px;
+      z-index: 10;
+      &:hover{
+        text-decoration:none;
+        color:#fff;
+      }
+    }
+  }
+}
+
+section {
+  background: url(bg.gif) repeat-x;
+  height:600px;
+  img {
+    position:absolute;
+    top:0;
+    left:0;
+  }
+  p {
+    position: relative;
+    margin-left: 600px;
+    padding-top: 200px;
+  }
+}

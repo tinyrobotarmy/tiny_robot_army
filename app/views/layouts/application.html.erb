@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TinyRobotArmy</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav>
+    <ol class="unstyled">
+      <li><a href="#" title="Home"><i class="icon-home"></i></a></li>
+      <li><a href="#" title="Blog"><i class="icon-edit"></i></a></li>
+    </ol>
+  </nav>
+<section>
+<%= yield %>
+</section>
+</body>
+</html>

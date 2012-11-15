@@ -7,14 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav style="display:none;">
+  <nav>
     <ol class="unstyled">
-      <li><a href="#" title="Home"><i class="icon-home"></i></a></li>
-      <li><a href="#" title="Blog"><i class="icon-edit"></i></a></li>
+      <li>
+        <a href="/" title="Home">
+          <i class="icon-home"></i>
+          <div>Home</div>
+        </a>
+      </li>
+      <li>
+        <a href="/contact" title="Contact">
+          <i class="icon-envelope"></i>
+          <div>Contact</div>
+        </a>
+      </li>
+      <li style="display:none;">
+        <a href="#" title="Blog">
+          <i class="icon-edit"></i>
+          <div>Blog</div>
+        </a>
+      </li>
     </ol>
   </nav>
-<section>
 <%= yield %>
-</section>
+<footer>
+  &copy; 2011 - 2012 Tiny Robot Army
+</footer>
 </body>
 </html>

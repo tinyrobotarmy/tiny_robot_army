@@ -1,0 +1,57 @@
+
+.entries {
+  margin: 0;
+  padding: 0.5em 0.25em;
+  width:800px;
+  >li {
+    border-left: #ccc 1px solid;
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+    h2 {
+      text-align:left;
+      text-transform: uppercase;
+      font-size: 24px;
+      margin:0;
+    }
+    h4 {
+      margin: 0;
+    }
+    p {
+      overflow:auto;
+      margin-left:0;
+      img {
+        padding:5px;
+      }
+    }
+    .footer{
+      background-color: #f8f8f8;
+      font-size: smaller;
+      padding: 5px 10px;
+      margin:0;
+      .posted {
+        line-height:30px;
+      }
+      .comments {
+        float:right;
+        color:$green;
+        font-size:14px;
+        line-height:30px;
+        a {
+          margin-left:10px;
+        }
+      }
+    }
+  }
+}
+
+abbr[title] {
+  color: $error_colour;
+  border: 0;
+}
+
+form {
+  width:800px;
+}
+textarea, input {
+  width:80%;
+}

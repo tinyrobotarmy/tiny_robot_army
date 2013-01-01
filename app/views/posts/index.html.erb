@@ -1,0 +1,19 @@
+
+<%= link_to t('.new_post'), new_post_path %>
+<ul id="posts" class="unstyled entries">
+<% @posts.each do |post| %>
+  <li>
+    <%= render partial: 'post', locals: { post: post } %>
+  </li>
+<% end -%>
+</ul>
+<%= content_for :dom_ready do %>
+  $('#posts>li').each(function(){
+      var el = $(this);
+      el.find('form').slideoutForm({list: el.find('ul.comments'), control:el.find('.add-comment'), cancel:el.find('.cancel')});
+    }).bind('newItem', function(event, item) {
+      var countElement = $(item).parents('.contained').find('.count');
+      var currentCount = parseInt(countElement.html());
+      countElement.html((currentCount + 1) + (currentCount == 0 ? ' Comment' : ' Comments'));
+    });
+<% end -%>

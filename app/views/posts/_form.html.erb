@@ -1,0 +1,22 @@
+<%= simple_form_for post do |post_form| %>
+  <%= content_for :message_box do %>
+    <%= render 'shared/errors', :object => post_form.object %>
+  <% end %>
+  <%= post_form.input :subject, :autofocus => true %>
+  <%= post_form.input :body, :input_html => {:rows => 10} %>
+  <div class="actions">
+    <%= post_form.button :submit, :class => 'btn btn-success' %>
+    <%= link_to t('.cancel'), '#', :class => 'btn cancel', :id => 'cancel_update' %>
+  </div>
+<% end -%>
+<%= content_for :dom_ready do %>
+var options = {buttonList:['save', 'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify', 'ol', 'ul',
+      'fontSize', 'fontFamily', 'fontFormat', 'indent', 'outdent', 'link', 'forecolor']
+  };
+  var wysiwyg = new nicEditor(options);
+  wysiwyg.panelInstance($('textarea').attr('id'));
+  $('form').bind('formHide', function () {
+    wysiwyg.nicInstances[0].setContent('');
+  });
+  $('textarea').removeAttr('required');
+<% end -%>

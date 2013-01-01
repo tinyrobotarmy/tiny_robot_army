@@ -1,5 +1,11 @@
 TinyRobotArmy::Application.routes.draw do
+  devise_for :users
+
   # The priority is based upon order of creation:
+  resources :posts do
+    resources :comments, only: [:create]
+  end
+
   match '/contact' => 'home#contact'
   root :to => 'home#index'
 

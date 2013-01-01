@@ -1,15 +1,23 @@
+$base_text_colour:#00413d;
+$error_colour:#c1272d;
+$notice_colour:#336600;
+
 @import 'bootstrap';
 @import "font-awesome";
+@import "message_box";
+@import "posts";
 
 body {
   position:relative;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  padding: 20px;
 }
 nav {
-  position:absolute;
-  top:50px;
-  left:0;
+  display:inline-block;
+  margin-left: 50px;
   li {
-    margin: 30px 0 0 10px;
+    display: inline-block;
+    margin-left: 50px;
     a {
       position:relative;
       color:#02103f;
@@ -28,24 +36,9 @@ nav {
   }
 }
 
-section {
-  background: url(bg.gif) repeat-x;
-  height:600px;
-  img {
-    position:absolute;
-    top:0;
-    left:0;
-  }
-  p {
-    position: relative;
-    margin-left: 600px;
-    padding-top: 200px;
-  }
-}
-
-.page {
-  margin:10px 0 0 100px;
-  min-height:400px;
+p {
+  width: 800px;
+  margin: 20px;
 }
 
 footer {

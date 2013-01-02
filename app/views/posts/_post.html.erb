@@ -5,7 +5,7 @@
 <ul class="comments unstyled">
   <% post.comments.each do |comment| %>
   <li>
-    <h4><%= member_image comment.author %> <%= comment.author.full_name %></h4>
+    <h4><%= comment.author.full_name %></h4>
     <%= comment.body %>
   </li>
   <% end %>

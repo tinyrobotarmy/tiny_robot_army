@@ -3,9 +3,10 @@
 
 en:
   posts:
-    index:
+    post:
       author: "Posted %{ago} ago by %{author}"
       comment: Comment
       comments:
         one: "1 Comment"
         other: "%{count} Comments"
+      body: Your Comment

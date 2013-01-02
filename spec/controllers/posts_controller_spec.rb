@@ -10,7 +10,7 @@ describe PostsController do
     end
 
     it 'should order posts by created_at date' do
-      Post.should_receive(:order).with(:created_at)
+      Post.should_receive(:order).with('created_at DESC')
       subject
     end
   end

@@ -3,7 +3,7 @@ TinyRobotArmy::Application.routes.draw do
 
   # The priority is based upon order of creation:
   resources :posts do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :show]
   end
 
   match '/contact' => 'home#contact'

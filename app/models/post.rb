@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :subject, :body, :author_id
+  attr_accessible :subject, :body, :author
   validates_presence_of :subject, :body
 
   belongs_to :author, :class_name => 'User'

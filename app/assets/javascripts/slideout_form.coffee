@@ -49,7 +49,7 @@
       false
 
     updateList: (data) ->
-      @list.prepend data
+      @list.find('li.form').after(data)
       @form.trigger "newItem", @list.find("li:first")
       $("input[type=submit]").removeAttr "disabled"
       @cancel()

@@ -3,10 +3,20 @@
 
 en:
   posts:
-    post:
+    index:
       author: "Posted %{ago} ago by %{author}"
       comment: Comment
       comments:
         one: "1 Comment"
         other: "%{count} Comments"
       body: Your Comment
+    show:
+      author: "Posted %{ago} ago by %{author}"
+      comment: Add a Comment
+      comments:
+        one: "1 Comment"
+        other: "%{count} Comments"
+      body: Your Comment
+  shared:
+    comment:
+      author: "Posted %{ago} ago by %{author}"

@@ -1,0 +1,6 @@
+<li class="comment">
+  <%= comment.body %>
+  <div class="posted">
+    <%= t '.author', {author: comment.post.author.first_name, ago: time_ago_in_words(comment.post.created_at)} %>
+  </div>
+</li>

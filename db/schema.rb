@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230212303) do
+ActiveRecord::Schema.define(:version => 20130105214013) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20121230212303) do
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -56,9 +56,10 @@ ActiveRecord::Schema.define(:version => 20121230212303) do
     t.integer  "failed_attempts",        :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "updated_at",                             :null => false
-    t.datetime "created_at",                             :null => false
-    t.integer  "lock_version",           :default => 0,  :null => false
+    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                :null => false
+    t.integer  "lock_version",           :default => 0,     :null => false
+    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

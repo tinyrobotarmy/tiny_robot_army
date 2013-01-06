@@ -1,4 +1,4 @@
-<%= simple_form_for post do |post_form| %>
+<%= simple_form_for [:admin, post] do |post_form| %>
   <%= content_for :message_box do %>
     <%= render 'shared/errors', :object => post_form.object %>
   <% end %>

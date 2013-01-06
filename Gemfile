@@ -16,6 +16,10 @@ group :test, :development do
   gem 'webrat'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'pry'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
 end
 
 # Gems used only for assets and not required

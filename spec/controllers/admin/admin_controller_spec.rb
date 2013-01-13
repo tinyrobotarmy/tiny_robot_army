@@ -25,7 +25,7 @@ describe AdminUsingController do
       match '/test' => "admin_using#test"
     end
     controller.stub(:current_user).and_return('ABC')
-    #   controller.stub(:authenticate_user!).and_return true
+    controller.stub(:authenticate_user!).and_return true
   end
 
   after do
@@ -38,7 +38,7 @@ describe AdminUsingController do
     context 'when the urrent user is not an admin' do
       let(:user) { stub_model(User, :admin? => true) }
       
-      it 'should send status 403' do
+      pending 'should send status 403' do
         # with_admin_routing do
           subject
           response.code.should == '403'

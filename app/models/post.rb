@@ -9,8 +9,20 @@ class Post < ActiveRecord::Base
     write_attribute(:body, value.nil? ? nil : reject_invalid_input(value))
   end
 
+  def status
+    Status.find(status_id) if status_id
+  end
+
+  def status=(new_status)
+    self.status_id = new_status ? new_status.id : nil
+  end
+
   private
   def reject_invalid_input(string)
     string.gsub(/^<br>$|<script.*>.*<\/script>/, '')
+  end
+
+  def set_default_status
+    status_id = Status::DRAFT.id unless status_id
   end
 end

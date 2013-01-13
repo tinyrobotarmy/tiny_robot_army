@@ -1,6 +1,10 @@
 class Admin::PostsController < Admin::AdminController
   respond_to :html
 
+  def index
+    respond_with @posts = Post.order('created_at DESC')
+  end
+
   def show
     @new_comment = Comment.new()
     respond_with @post = Post.find(params[:id])
@@ -11,7 +15,6 @@ class Admin::PostsController < Admin::AdminController
   end
 
   def create
-    puts "params: #{params.inspect}"
     respond_with @post = Post.create(params[:post].merge(author: current_user))
   end
 end

@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130105214013) do
     t.datetime "created_at",                                :null => false
     t.integer  "lock_version",           :default => 0,     :null => false
     t.boolean  "admin",                  :default => false
+    t.integer  "status_id",              :default => 0
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

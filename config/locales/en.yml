@@ -20,3 +20,7 @@ en:
   shared:
     comment:
       author: "Posted %{ago} ago by %{author}"
+    post:
+      comments:
+        one: "1 Comment"
+        other: "%{count} Comments"

@@ -1,12 +1,16 @@
+
+.pagination= will_paginate @posts, renderer: BootstrapLinkRenderer
 %ul#posts.unstyled.entries
   - @posts.each do |post|
     %li
       %h2= link_to post.subject, post_path(post)
       %p
-        = raw post.body
+        = raw truncate(post.body, length: 400)
+        = link_to 'read full post', post_path(post)
       .footer
         %span.posted
           = t '.author', {author: post.author.first_name, ago: time_ago_in_words(post.created_at)}
         .comments
           %i.icon-comments
           %span.count= t('.comments', count: post.comments.size)
+.pagination= will_paginate @posts, renderer: BootstrapLinkRenderer

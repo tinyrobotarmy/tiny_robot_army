@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass-rails'
 gem 'feedzirra'
+gem 'will_paginate'
 
 group :test, :development do
   gem 'rspec-rails', '>= 2.8.0'

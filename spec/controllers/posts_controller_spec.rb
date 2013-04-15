@@ -2,16 +2,17 @@ require "spec_helper"
 
 describe PostsController do
   describe 'GET #index' do
-    subject { get :index }
 
-    it 'should expose @posts for rendering' do
-      subject
-      assigns(:posts).should == Post.order('created_at DESC')
+    it 'should make paginated posts available for rendering' do
+      Post.stub_chain(:order, :paginate).and_return 'some posts'
+      get :index
+      assigns(:posts).should == 'some posts'
     end
 
-    it 'should order posts by created_at date' do
-      Post.should_receive(:order).with('created_at DESC')
-      subject
+    it 'should render the index template' do
+      get :index
+      response.should render_template :index
     end
-  end  
+
+  end
 end

@@ -1,0 +1,25 @@
+%h2= post.subject
+%p
+  = raw post.body
+%ul.comments.unstyled
+  %li.count
+    %i.icon-comments
+    %span.count= t('.comments', count: post.comments.size)
+    = link_to raw(t('.comment')), '#', class: 'btn btn-success add-comment'
+  - if allow_comments
+    %li.form
+      = simple_form_for @new_comment, url: post_comments_path(post), html: {class: 'hidden'} do |comment_form|
+        = comment_form.input :body, label: t('.body'), input_html: {rows: 5}
+        .actions
+          = comment_form.button :submit, class: 'btn btn-success'
+          = link_to t('.cancel'), '#', class: 'btn cancel'
+  - post.comments.each do |comment|
+    = render partial: 'shared/comment', locals: { comment: comment }
+= content_for :dom_ready do
+  $('form').slideoutForm({list: $('ul.comments'),
+  control: $('.add-comment'),
+  cancel: $('.cancel')}).bind('newItem', function(event, item) {
+  var countElement = $(item).parents('.contained').find('.count');
+  var currentCount = parseInt(countElement.html());
+  countElement.html((currentCount + 1) + (currentCount == 0 ? ' Comment' : ' Comments'));
+  });

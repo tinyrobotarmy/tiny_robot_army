@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %title TinyRobotArmy
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    = image_tag 'logo.png', alt: 'Tiny Robot Army'
+    %nav
+      %ol.unstyled
+        %li
+          %a{:href => "/", :title => "Home"}
+            %i.icon-home
+          %div Home
+        %li
+          %a{:href => "/contact", :title => "Contact"}
+            %i.icon-envelope
+          %div Contact
+        %li
+          %a{:href => "/posts", :title => "Blog"}
+            %i.icon-rss
+          %div Blog
+        %li
+          %a{:href => "/admin/posts/new", :title => "Blog"}
+            %i.icon-edit
+          %div Post
+    = message_box(yield(:message_box))
+    = yield
+    %footer
+      \&copy; 2011 - 2012 Tiny Robot Army
+    :javascript
+      $(document).ready(function(){
+        #{yield(:dom_ready)}
+      });

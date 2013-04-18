@@ -6,7 +6,7 @@
   %li.count
     %i.icon-comments
     %span.count= t('.comments', count: @post.comments.size)
-    = link_to raw(t('.comment')), '#', class: 'btn btn-success add-comment'
+    = link_to(raw(t('.comment')), '#', class: 'btn btn-success add-comment')
   - if allow_comments
     %li.form
       = simple_form_for @new_comment, url: post_comments_path(@post), html: {class: 'hidden'} do |comment_form|

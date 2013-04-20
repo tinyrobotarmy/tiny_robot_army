@@ -22,9 +22,9 @@
             %i.icon-rss
           %div Blog
         %li
-          %a{:href => new_user_session_path, :title => "Sign In"}
-            %i.icon-signin
-          %div Sign In
+          = sign_in_out current_user
+        %li
+          = admin_link current_user
     = message_box(yield(:message_box))
     = yield
     %footer

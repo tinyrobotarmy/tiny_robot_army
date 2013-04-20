@@ -4,9 +4,13 @@
       %th= t('.subject')
       %th= t('.author')
       %th= t('.comments')
+      %th
   %tbody
     - @posts.each do |post|
       %tr
         %td= post.subject
         %td= post.author.full_name
         %td= post.comments.count
+        %td
+          = link_to raw('<i class="icon-edit"></i>'), edit_admin_post_path(post)
+          = link_to raw('<i class="icon-trash"></i>'), admin_post_path(post), :method => :delete, :data => { :confirm => 'Are you sure?' }

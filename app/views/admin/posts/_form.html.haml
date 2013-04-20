@@ -5,7 +5,7 @@
   = post_form.input :body, :input_html => {:rows => 10}
   .actions
     = post_form.button :submit, :class => 'btn btn-success'
-    = link_to t('.cancel'), '#', :class => 'btn cancel', :id => 'cancel_update'
+    = link_to t('.cancel'), admin_posts_path, :class => 'btn cancel', :id => 'cancel_update'
 = content_for :dom_ready do
   var options = {buttonList:['save', 'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify', 'ol', 'ul',
   'fontSize', 'fontFamily', 'fontFormat', 'indent', 'outdent', 'link', 'forecolor']

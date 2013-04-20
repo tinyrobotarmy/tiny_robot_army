@@ -22,9 +22,9 @@
             %i.icon-rss
           %div Blog
         %li
-          %a{:href => "/admin/posts/new", :title => "Blog"}
-            %i.icon-edit
-          %div Post
+          %a{:href => new_user_session_path, :title => "Sign In"}
+            %i.icon-signin
+          %div Sign In
     = message_box(yield(:message_box))
     = yield
     %footer

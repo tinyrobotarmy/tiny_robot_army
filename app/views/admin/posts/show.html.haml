@@ -1,1 +1,10 @@
-= render partial: 'shared/post', locals: { post: @post }
+%h2= @post.subject
+= link_to 'back to posts', admin_posts_path, class: 'pull-right'
+%p
+  = raw @post.body
+%ul.comments.unstyled
+  %li.count
+    %i.icon-comments
+    %span.count= t('.comments', count: @post.comments.size)
+  - @post.comments.each do |comment|
+    = render partial: 'shared/comment', locals: { comment: comment }

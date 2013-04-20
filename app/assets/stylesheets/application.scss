@@ -2,6 +2,7 @@ $base_text_colour:#00413d;
 $error_colour:#c1272d;
 $notice_colour:#336600;
 $light_grey: #f8f8f8;
+$grey: #ccc;
 
 @import 'bootstrap';
 @import "font-awesome";
@@ -26,7 +27,7 @@ nav {
       display:block;
       text-align:center;
       div {
-        font-size:18px;
+        font-size:14px;
       }
       z-index: 10;
       &:hover{
@@ -42,11 +43,6 @@ h2 {
   text-transform: uppercase;
   font-size: 24px;
   margin:0;
-}
-
-p {
-  width: 800px;
-  margin: 20px;
 }
 
 footer {

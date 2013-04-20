@@ -4,10 +4,10 @@
   padding: 0.5em 0.25em;
   width:800px;
   >li {
-    border-left: #ccc 1px solid;
+    border-left: $grey 1px solid;
     margin: 0 0 20px 0;
     padding-left: 20px;
-    
+
     h4 {
       margin: 0;
     }
@@ -52,7 +52,6 @@ textarea, input {
 }
 
 ul.comments {
-  margin-left: 20px;
   background-color: $light_grey;
 
   li {
@@ -61,12 +60,34 @@ ul.comments {
 
     &.comment {
       background-color: #fff;
-      border: solid 1px #ccc;
+      border: solid 1px $grey;
       margin:0 5px 10px 5px;
       div.posted {
         margin-top: 10px;
-        color: #ccc;
+        color: $grey;
       }
+    }
+  }
+}
+
+.post {
+  width: 800px;
+  h2 {
+    background-color: $light_grey;
+    border-bottom: 1px solid $grey;
+    padding-left: 10px;
+    a {
+      margin-right: 10px;
+    }
+  }
+  p {
+    padding-left:10px;
+  }
+  .back {
+    margin-left:10px;
+    line-height: 25px;
+    i {
+      padding-right: 10px;
     }
   }
 }

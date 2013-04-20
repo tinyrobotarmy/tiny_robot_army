@@ -8,6 +8,7 @@ TinyRobotArmy::Application.routes.draw do
   root :to => 'home#index'
 
   namespace :admin do
+    match 'dashboard' => 'admin#dashboard', via: :get, as: :dashboard
     resources :posts
   end
 end

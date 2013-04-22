@@ -10,14 +10,14 @@
     %nav
       %ol.unstyled
         %li
-          = link_to raw('<i class="icon-globe"></i>'), root_path
-          %div Site
+          = link_to raw(site_link_label), root_path
         %li
-          = link_to raw('<i class="icon-dashboard"></i>'), admin_dashboard_path
-          %div Dashboard
+          = link_to raw(dashboard_link_label), admin_dashboard_path
         %li
-          = link_to raw('<i class="icon-edit"></i>'), admin_posts_path
-          %div Posts
+          = link_to raw(posts_link_label), admin_posts_path
+        %li
+          = link_to raw(categories_link_label), admin_categories_path
+
     = message_box(yield(:message_box))
     = yield
     %footer

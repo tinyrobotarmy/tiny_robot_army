@@ -6,6 +6,9 @@ en:
     dashboard: Dashboard
     sign_out: 'Sign Out'
     sign_in: 'Sign In'
+  layouts:
+    admin:
+      site: 'Site'
   posts:
     index:
       author: "Posted %{ago} ago by %{author}"

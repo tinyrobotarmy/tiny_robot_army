@@ -6,6 +6,7 @@ describe ApplicationHelper do
   end
 
   describe '#allow_comments' do
+    subject { helper.allow_comments }
     it { should be_true }
   end
 

@@ -11,6 +11,35 @@ describe Admin::PostsController do
     {subject: 'good one', body: 'great bod'}.merge(add_or_override)
   end
 
+  describe 'GET #index' do
+    subject { get :index }
+    it 'should make posts available for rendering' do
+      Post.stub(:order).and_return 'all posts'
+      subject
+      assigns(:posts).should == 'all posts'
+    end
+
+    it 'should render index template' do
+      subject
+      response.should render_template :index
+    end
+  end
+
+  describe 'GET #show' do
+    subject { get :show, id: post.id }
+    let(:post) { stub_model(Post) }
+    before { Post.stub(:find).and_return post }
+    it 'should make the post available for rendering' do
+      subject
+      assigns(:post).should == post
+    end
+
+    it 'should render show template' do
+      subject
+      response.should render_template :show
+    end
+  end
+
   describe 'GET #new' do
     subject { get :new }
 
@@ -83,5 +112,17 @@ describe Admin::PostsController do
         response.should render_template :edit
       end
     end
+  end
+
+  describe 'DELETE #destroy' do
+    subject { delete :destroy, id: post.id }
+    let(:post) { stub_model(Post, destroy: true) }
+    before { Post.stub(:find).and_return post }
+
+    it 'should destroy the post' do
+      post.should_receive(:destroy)
+      subject
+    end
+
   end
 end

@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-MIN_COVERAGE = 85
+MIN_COVERAGE = 90
 require 'simplecov'
 SimpleCov.start 'rails' do
   # bug: changing the coverage_dir here breaks coverage recording.

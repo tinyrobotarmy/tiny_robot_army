@@ -1,6 +1,6 @@
 class Admin::AdminController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :authenticate_admin!
+  before_filter :require_admin!
   layout 'admin'
 
   def dashboard
@@ -8,7 +8,7 @@ class Admin::AdminController < ApplicationController
   end
 
   protected
-  def authenticate_admin!
+  def require_admin!
     render file: "#{Rails.root}/public/403", format: :html, status: 403 unless current_user.admin?
   end
 end

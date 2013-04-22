@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Admin::CategoriesController do
   before do
     controller.stub(:authenticate_user!).and_return true
-    controller.stub(:authenticate_admin!).and_return true
+    controller.stub(:require_admin!).and_return true
     controller.stub(:current_user).and_return stub_model(User)
   end
   def valid_attributes

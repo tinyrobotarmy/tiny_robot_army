@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :author, :class_name => 'User'
   has_many :comments, order: 'created_at DESC'
+  has_and_belongs_to_many :categories
 
   def body=(value)
     write_attribute(:body, value.nil? ? nil : reject_invalid_input(value))

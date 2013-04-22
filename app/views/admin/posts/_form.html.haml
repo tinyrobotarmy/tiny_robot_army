@@ -2,6 +2,7 @@
   = content_for :message_box do
     = render 'shared/errors', :object => post_form.object
   = post_form.input :subject, :autofocus => true
+  = post_form.association :categories
   = post_form.input :body, :input_html => {:rows => 10}
   .actions
     = post_form.button :submit, :class => 'btn btn-success'

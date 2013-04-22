@@ -10,17 +10,11 @@
     %nav
       %ol.unstyled
         %li
-          %a{:href => "/", :title => "Home"}
-            %i.icon-home
-          %div Home
+          = link_to home_link_label, '/'
         %li
-          %a{:href => "/contact", :title => "Contact"}
-            %i.icon-envelope
-          %div Contact
+          = link_to contact_link_label, '/contact'
         %li
-          %a{:href => "/posts", :title => "Blog"}
-            %i.icon-rss
-          %div Blog
+          = link_to blog_link_label, posts_path
         %li
           = sign_in_out current_user
         %li

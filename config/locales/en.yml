@@ -2,13 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  application:
-    dashboard: Dashboard
-    sign_out: 'Sign Out'
-    sign_in: 'Sign In'
   layouts:
     admin:
       site: 'Site'
+    application:
+      dashboard: Dashboard
+      sign_out: 'Sign Out'
+      sign_in: 'Sign In'
+      home: home
+      contact_us: Contact Us
+      blog: Blog
   posts:
     index:
       author: "Posted %{ago} ago by %{author}"

@@ -11,6 +11,12 @@ class Status
   end
 
   def self.find(id)
+    raise ActiveRecord::RecordNotFound.new unless id <=  all.length
+    all[id]
+  end
+
+  def self.find_by_id(id)
+    return nil unless id <= all.length
     all[id]
   end
 

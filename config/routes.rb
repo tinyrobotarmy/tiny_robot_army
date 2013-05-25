@@ -11,5 +11,6 @@ TinyRobotArmy::Application.routes.draw do
     match 'dashboard' => 'admin#dashboard', via: :get, as: :dashboard
     resources :categories
     resources :posts
+    resources :images
   end
 end

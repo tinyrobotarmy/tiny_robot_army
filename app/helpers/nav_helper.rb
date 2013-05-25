@@ -26,4 +26,8 @@ module NavHelper
   def categories_link_label
     content_tag(:i, '', class: 'icon-tasks') + content_tag(:div, t('.categories'))
   end
+
+  def images_link_label
+    content_tag(:i, '', class: 'icon-picture') + content_tag(:div, t('.images'))
+  end
 end

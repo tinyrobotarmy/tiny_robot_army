@@ -1,19 +1,18 @@
 = simple_form_for [:admin, post] do |post_form|
+  = post_form.input :body, as: :hidden
   = content_for :message_box do
-    = render 'shared/errors', :object => post_form.object
-  = post_form.input :subject, :autofocus => true
+    = render 'shared/errors', object: post_form.object
+  = post_form.input :subject, autofocus: true
   = post_form.association :categories
-  = post_form.input :body, :input_html => {:rows => 10}
-  .actions
-    = post_form.button :submit, :class => 'btn btn-success'
-    = link_to t('.cancel'), admin_posts_path, :class => 'btn cancel', :id => 'cancel_update'
+  = render partial: 'wysiwyg_toolbar'
+  #post_body_editor{ contenteditable: true }
+    = raw post.body
+  .form-actions
+    = post_form.button :submit, class: 'btn btn-success'
+    = link_to t('.cancel'), admin_posts_path, class: 'btn cancel', id: 'cancel_update'
 = content_for :dom_ready do
-  var options = {buttonList:['save', 'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify', 'ol', 'ul',
-  'fontSize', 'fontFamily', 'fontFormat', 'indent', 'outdent', 'link', 'forecolor']
-  };
-  var wysiwyg = new nicEditor(options);
-  wysiwyg.panelInstance($('textarea').attr('id'));
-  $('form').bind('formHide', function () {
-  wysiwyg.nicInstances[0].setContent('');
+  $('#post_body_editor').wysiwyg()
+  $('form').submit(function(){
+  $('#post_body').val($('#post_body_editor').html());
+  true;
   });
-  $('textarea').removeAttr('required');

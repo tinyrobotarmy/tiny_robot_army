@@ -6,11 +6,14 @@ $light_grey: #f8f8f8;
 $grey: #ccc;
 
 @import "compass/css3/transition";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
 @import "bootstrap";
 @import "font-awesome";
 @import "message_box";
 @import "posts";
 @import "dropzone";
+@import "wysiwyg";
 
 body {
   position:relative;

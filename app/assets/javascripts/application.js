@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require_tree ../../../vendor/assets/javascripts/.
-//= require_tree .
+//= require message_box
+//= require slideout_form
+//= require wysiwyg_config
 
 
 Dropzone.options.newImage = {

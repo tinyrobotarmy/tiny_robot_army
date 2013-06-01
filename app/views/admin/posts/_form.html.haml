@@ -10,9 +10,3 @@
   .form-actions
     = post_form.button :submit, class: 'btn btn-success'
     = link_to t('.cancel'), admin_posts_path, class: 'btn cancel', id: 'cancel_update'
-= content_for :dom_ready do
-  $('#post_body_editor').wysiwyg()
-  $('form').submit(function(){
-  $('#post_body').val($('#post_body_editor').html());
-  true;
-  });

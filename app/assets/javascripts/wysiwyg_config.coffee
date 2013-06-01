@@ -27,11 +27,21 @@ $ ->
 
     else
       $("#voiceBtn").hide()
-  showErrorAlert = (reason, detail) ->
-    msg = ""
-    if reason is "unsupported-file-type"
-      msg = "Unsupported format " + detail
-    else
-      console.log "error uploading file", reason, detail
-    $("<div class=\"alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>" + "<strong>File upload error</strong> " + msg + " </div>").prependTo "#alerts"
+
   initToolbarBootstrapBindings()
+
+  $('#image_modal').on('click', 'a.thumbnail', ->
+    $('#image_modal').modal('hide')
+    window.wysiwyg.focus()
+    document.execCommand("insertImage",0 , $(this).find('img').attr('src'))
+    false
+  )
+
+  window.wysiwyg = $('#post_body_editor').wysiwyg()
+  $('#pictureBtn').click( ->
+    console.log this
+  )
+
+  $('form').submit( ->
+    $('#post_body').val($('#post_body_editor').cleanHtml())
+  )

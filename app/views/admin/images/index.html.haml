@@ -1,8 +1,9 @@
-%table
-  %tbody
-    - @images.each_slice(4) do |images_row|
+%ul.unstyled
+  - @images.each_slice(3) do |images_row|
+    %li
       %ul.thumbnails
         - images_row.each do |image|
           %li.span2
             %a.thumbnail{href: '#'}
               = image_tag image.file.thumb.url
+

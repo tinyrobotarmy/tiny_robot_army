@@ -55,12 +55,16 @@
     %a.btn{"data-edit" => "unlink", :title => "Remove Hyperlink"}
       %i.icon-cut
   .btn-group
-    %a#pictureBtn.btn{:title => "Insert picture (or just drag & drop)"}
+    %a#pictureBtn.btn.dropdown-toggle{title: "Insert picture", href: '/admin/images', "data-edit" => "insertImage", "data-toggle" => "modal", "data-target" => "#image_modal"}
       %i.icon-picture
-    %input{"data-edit" => "insertImage", "data-role" => "magic-overlay", "data-target" => "#pictureBtn", :type => "file"}/
   .btn-group
     %a.btn{"data-edit" => "undo", :title => "Undo (Ctrl/Cmd+Z)"}
       %i.icon-undo
     %a.btn{"data-edit" => "redo", :title => "Redo (Ctrl/Cmd+Y)"}
       %i.icon-repeat
   %input#voiceBtn{"data-edit" => "inserttext", :type => "text", "x-webkit-speech" => ""}/
+#image_modal.modal.hide.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
+  .modal-header
+    %button.close{type: "button", "data-dismiss" => "modal", "aria-hidden" => true} &times;
+    %h3 Select an image to insert
+  .modal-body

@@ -2,7 +2,8 @@ class Admin::ImagesController < Admin::AdminController
   respond_to :html, :json
 
   def index
-    respond_with :admin, @images = Image.all
+    @images = Image.all
+    respond_with [:admin, @images], :layout => !request.xhr?
   end
 
   def show

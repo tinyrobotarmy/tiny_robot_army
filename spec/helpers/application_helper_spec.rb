@@ -1,27 +1,27 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, :type => :helper do
   before do
-    helper.stub(:t).and_return 'xx'
+    allow(helper).to receive(:t).and_return 'xx'
   end
 
   describe '#allow_comments' do
     subject { helper.allow_comments }
-    it { should be_true }
+    it { is_expected.to be_truthy }
   end
 
   describe "#message_box" do
     let(:content){ nil }
     subject{ helper.message_box(content) }
     it "should render a div with the class message-box" do
-      subject.should have_selector('div', :class => 'message-box')
+      expect(subject).to have_selector('div.message-box')
     end
 
     context "when a view has pushed up content_for the message box" do
       let(:content){ 'content from a view' }
 
       it "should render the content inside the message box" do
-        subject.should have_selector('div', :class => 'message-box', :content => 'content from a view')
+        expect(subject).to have_selector('div.message-box', text: 'content from a view')
       end
     end
 
@@ -31,7 +31,7 @@ describe ApplicationHelper do
       end
 
       it "should render the error message inside a div with the class alert" do
-        subject.should have_selector('div.message-box>div', :class => 'alert', :content => 'You screwed up!')
+        expect(subject).to have_selector('div.message-box>div.alert', text: 'You screwed up!')
       end
     end
 
@@ -41,7 +41,7 @@ describe ApplicationHelper do
       end
 
       it "should render the message inside a div with the class notice" do
-        subject.should have_selector('div.message-box>div', :class => 'notice', :content => 'You screwed did good!')
+        expect(subject).to have_selector('div.message-box>div.notice', text: 'You screwed did good!')
       end
     end
 
@@ -52,7 +52,7 @@ describe ApplicationHelper do
       end
 
       it "should render the view content inside the message box" do
-        subject.should have_selector('div', :class => 'message-box', :content => 'content from a view')
+        expect(subject).to have_selector('div.message-box', text: 'content from a view')
       end
     end
   end
@@ -61,16 +61,16 @@ describe ApplicationHelper do
     subject { helper.admin_link user }
     context 'when the user is nil' do
       let(:user) { nil }
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
     context 'when the user is a normal user' do
       let(:user) { User.new }
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
     context 'when the user is an admin' do
       let(:user) { User.new(admin: true) }
       it 'should render a link to the admin dashboard' do
-        subject.should have_selector(:a, href: admin_dashboard_path)
+        expect(subject).to have_selector("a[href=\"#{admin_dashboard_path}\"]")
       end
     end
 
@@ -81,13 +81,13 @@ describe ApplicationHelper do
     context 'when the user is nil' do
       let(:user) { nil }
       it 'should render a link to sign in' do
-        subject.should have_selector(:a, href: new_user_session_path)
+        expect(subject).to have_selector("a[href=\"#{new_user_session_path}\"]")
       end
     end
     context 'when the user present' do
       let!(:user) { User.new }
       it 'should render a link to sign out' do
-        subject.should have_selector(:a, href: destroy_user_session_path(user))
+        expect(subject).to have_selector("a[href=\"#{destroy_user_session_path(user)}\"]")
       end
     end
 

@@ -1,20 +1,20 @@
-require "spec_helper"
+require "rails_helper"
 
-describe Status do
+describe Status, :type => :model do
   describe "object equality" do
-    specify {Status::DRAFT.should === Status::DRAFT}
-    specify {Status.new(0, 'Draft').should_not === Status::DRAFT}
+    specify {expect(Status::DRAFT).to be === Status::DRAFT}
+    specify {expect(Status.new(0, 'Draft')).not_to be === Status::DRAFT}
   end
 
   describe '#all' do
     it 'should return 11 statuss' do
-      Status.all.should have(2).items
+      expect(Status.all.size).to eq(2)
     end
   end
 
   describe '#find' do
     it 'should return the status with the id provided' do
-      Status.find(1).id.should == 1
+      expect(Status.find(1).id).to eq(1)
     end
 
     it 'should raise RecordNotFound id there is no status with the id provided' do
@@ -24,11 +24,11 @@ describe Status do
 
   describe '#find_by_id' do
     it 'should return the status with the id provided' do
-      Status.find_by_id(0).id.should == 0
+      expect(Status.find_by_id(0).id).to eq(0)
     end
 
     it 'should return nil if there is no status with the id provided' do
-      Status.find_by_id(20).should be_nil
+      expect(Status.find_by_id(20)).to be_nil
     end
   end
 end

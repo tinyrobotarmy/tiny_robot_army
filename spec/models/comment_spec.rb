@@ -1,8 +1,8 @@
-require "spec_helper"
+require "rails_helper"
 
-describe Comment do
-  it { should validate_presence_of :body }
+describe Comment, :type => :model do
+  it { is_expected.to validate_presence_of :body }
 
-  it { should belong_to :author }
-  it { should belong_to :post }
+  it { is_expected.to belong_to :author }
+  it { is_expected.to belong_to :post }
 end

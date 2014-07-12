@@ -18,8 +18,8 @@ gem 'uglifier'
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'webrat'
-  gem 'simplecov', require: false
+  gem 'capybara'
   gem 'shoulda-matchers', require: false
+  gem 'simplecov', require: false
   gem 'byebug'
 end

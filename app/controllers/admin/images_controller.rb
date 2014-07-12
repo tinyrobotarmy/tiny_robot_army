@@ -15,7 +15,7 @@ class Admin::ImagesController < Admin::AdminController
   end
 
   def create
-    @image = Image.create(images_params)
+    @image = Image.create(image_params)
     respond_with :admin, @image
   end
 

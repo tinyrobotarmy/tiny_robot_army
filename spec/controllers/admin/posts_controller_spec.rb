@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe Admin::PostsController do
+describe Admin::PostsController, :type => :controller do
   before do
-    controller.stub(:authenticate_user!).and_return true
-    controller.stub(:require_admin!).and_return true
-    controller.stub(:current_user).and_return stub_model(User)
+    allow(controller).to receive(:authenticate_user!).and_return true
+    allow(controller).to receive(:require_admin!).and_return true
+    allow(controller).to receive(:current_user).and_return User.new
   end
 
   def valid_attributes(add_or_override={})
@@ -14,29 +14,29 @@ describe Admin::PostsController do
   describe 'GET #index' do
     subject { get :index }
     it 'should make posts available for rendering' do
-      Post.stub(:order).and_return 'all posts'
+      allow(Post).to receive(:order).and_return 'all posts'
       subject
-      assigns(:posts).should == 'all posts'
+      expect(assigns(:posts)).to eq('all posts')
     end
 
     it 'should render index template' do
       subject
-      response.should render_template :index
+      expect(response).to render_template :index
     end
   end
 
   describe 'GET #show' do
     subject { get :show, id: post.id }
-    let(:post) { stub_model(Post) }
-    before { Post.stub(:find).and_return post }
+    let(:post) { double(:post, id: 356) }
+    before { allow(Post).to receive(:find).and_return post }
     it 'should make the post available for rendering' do
       subject
-      assigns(:post).should == post
+      expect(assigns(:post)).to eq(post)
     end
 
     it 'should render show template' do
       subject
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end
 
@@ -45,23 +45,23 @@ describe Admin::PostsController do
 
     it 'should expose a new Post as @post for editing' do
       subject
-      assigns(:post).should be_new_record
+      expect(assigns(:post)).to be_new_record
     end
 
     it 'should render the new template' do
       subject
-      response.should render_template :new
+      expect(response).to render_template :new
     end
   end
 
   describe 'POST #create' do
-    subject { post :create,post: post_attributes }
+    subject { post :create, post: post_attributes }
 
     context 'when attributes are invalid' do
       let(:post_attributes) { {subject: 'awesome post'} }
       it 'should re-render the new template' do
         subject
-        response.should render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
 
@@ -69,7 +69,7 @@ describe Admin::PostsController do
       let(:post_attributes) { valid_attributes }
       it 'should be a success' do
         subject
-        response.should redirect_to admin_post_path(assigns(:post))
+        expect(response).to redirect_to admin_post_path(assigns(:post))
       end
     end
   end
@@ -79,12 +79,12 @@ describe Admin::PostsController do
     let(:post) { Post.create!(valid_attributes)}
     it 'should make the post available for editing' do
       subject
-      assigns(:post).should == post
+      expect(assigns(:post)).to eq(post)
     end
 
     it 'should render the edit template' do
       subject
-      response.should render_template :edit
+      expect(response).to render_template :edit
     end
   end
 
@@ -96,12 +96,12 @@ describe Admin::PostsController do
 
       it 'should update the post' do
         subject
-        post.reload.subject.should == 'new subject'
+        expect(post.reload.subject).to eq('new subject')
       end
 
       it 'should redirect to the post show' do
         subject
-        response.should redirect_to admin_post_path(post)
+        expect(response).to redirect_to admin_post_path(post)
       end
     end
 
@@ -109,18 +109,18 @@ describe Admin::PostsController do
       let(:attributes) { {subject: ''} }
       it 'should render the edit template' do
         subject
-        response.should render_template :edit
+        expect(response).to render_template :edit
       end
     end
   end
 
   describe 'DELETE #destroy' do
     subject { delete :destroy, id: post.id }
-    let(:post) { stub_model(Post, destroy: true) }
-    before { Post.stub(:find).and_return post }
+    let(:post) { Post.new(id: 156) }
+    before { allow(Post).to receive(:find).and_return post }
 
     it 'should destroy the post' do
-      post.should_receive(:destroy)
+      expect(post).to receive(:destroy)
       subject
     end
 

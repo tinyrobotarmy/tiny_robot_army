@@ -22,7 +22,7 @@ $ ->
     if "onwebkitspeechchange" of document.createElement("input")
       editorOffset = $("#post_body_editor").offset()
       $("#voiceBtn").css("position", "absolute").offset
-        top: editorOffset.top + 30
+        top: editorOffset.top + 40
         left: editorOffset.left + $("#post_body_editor").innerWidth() - 35
 
     else

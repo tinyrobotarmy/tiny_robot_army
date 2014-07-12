@@ -2,11 +2,11 @@
   = post_form.input :body, as: :hidden
   = content_for :message_box do
     = render 'shared/errors', object: post_form.object
-  = post_form.input :subject, autofocus: true
-  = post_form.association :categories
+  = post_form.input :subject, autofocus: true, input_html: {class: 'form-control'}
+  = post_form.association :categories, input_html: {class: 'form-control'}
   = render partial: 'wysiwyg_toolbar'
-  #post_body_editor{ contenteditable: true }
+  .form-control#post_body_editor{ contenteditable: true }
     = raw post.body
-  .form-actions
+  .form-group.after-editable
     = post_form.button :submit, class: 'btn btn-success'
-    = link_to t('.cancel'), admin_posts_path, class: 'btn cancel', id: 'cancel_update'
+    = link_to t('.cancel'), admin_posts_path, class: 'btn btn-default cancel', id: 'cancel_update'

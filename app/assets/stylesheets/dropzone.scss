@@ -54,11 +54,11 @@
     margin-top: -87px;
   }
   &.drag-hover .message {
-    @include opacity(0.15);
+    opacity: 0.15;
   }
   &.started .message {
     display: block;
-    @include opacity(0);
+    opacity: 0;
   }
   .preview {
     @include box-shadow(rgba(0, 0, 0, 0.16) 1px 1px 4px);
@@ -208,7 +208,7 @@
 
 .dropzone .preview .error-mark, .dropzone-previews .preview .error-mark, .dropzone .preview .success-mark, .dropzone-previews .preview .success-mark {
   display: block;
-  @include opacity(0);
+  opacity: 0;
   @include transition-property(opacity);
   @include transition-duration(0.4s);
   @include transition-timing-function(ease-out);
@@ -271,7 +271,7 @@
 
 .dropzone .preview.success .progress, .dropzone-previews .preview.success .progress {
   display: block;
-  @include opacity(0);
+  opacity: 0 ;
   @include transition-property(opacity);
   @include transition-duration(0.4s);
   @include transition-timing-function(ease-in-out);
@@ -280,7 +280,6 @@
 .dropzone .preview .error-message, .dropzone-previews .preview .error-message {
   display: block;
   opacity: 0;
-  @include opacity(0);
   @include transition-property(opacity);
   @include transition-duration(0.3s);
   @include transition-timing-function(ease-in-out);

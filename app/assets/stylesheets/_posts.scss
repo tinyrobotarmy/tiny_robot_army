@@ -6,6 +6,7 @@
   }
   h2 {
     padding: 0.25em;
+    margin-bottom: 0.5em;
     color: #999;
     border-bottom: 6px solid $primary_colour;
     a {
@@ -16,10 +17,10 @@
       line-height: 1.5em;
     }
     .small {
-      font-size: 35%;
+      font-size: 50%;
       padding-bottom: 0.25em;
       color: $primary_colour;
-      margin-left: 7.5em;
+      margin-left: 5em;
     }
     .date {
       color: #999 ;

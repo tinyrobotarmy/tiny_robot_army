@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require message_box
 //= require slideout_form

@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   respond_to :html
 
   def index
+    @pinned = false
+    @categories = Category.all
     respond_with @posts = Post.order('created_at DESC').paginate(page: params[:page] || 1, per_page: 10)
   end
 

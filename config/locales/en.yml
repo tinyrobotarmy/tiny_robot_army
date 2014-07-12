@@ -11,6 +11,7 @@ en:
       blog: Blog
   posts:
     index:
+      page_title: All Entries
       author: "Posted %{ago} ago by %{author}"
       comment: Comment
       comments:

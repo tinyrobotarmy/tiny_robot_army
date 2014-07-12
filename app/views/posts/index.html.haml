@@ -1,16 +1,33 @@
-
-.pagination= will_paginate @posts, renderer: BootstrapLinkRenderer
-%ul#posts.unstyled.entries
-  - @posts.each do |post|
-    %li
-      %h2= link_to post.subject, post_path(post)
-      %p
-        = raw truncate(post.body, length: 400)
-        = link_to 'read full post', post_path(post)
-      .footer
-        %span.posted
-          = t '.author', {author: post.author.first_name, ago: time_ago_in_words(post.created_at)}
-        .comments
-          %i.icon-comments
-          %span.count= t('.comments', count: post.comments.size)
-.pagination= will_paginate @posts, renderer: BootstrapLinkRenderer
+.row.blog
+  .col-md-9
+    -if @pinned.present?
+      .pinnned
+        %h1= @pinned.subject
+        %p= raw @pinned.body
+    %h4= blog_title(@category)
+    %ul.blog-entries.list-unstyled
+      - @posts.each do |post|
+        %li
+          %h2
+            .pull-left.date
+              .day= post.created_at.day
+              .month= post.created_at.strftime('%B').upcase
+              .year= post.created_at.year
+            .subject= link_to post.subject, blog_entry_path(post)
+            .small= "BY #{post.author.full_name.upcase}"
+          %p= raw post.body
+      = will_paginate @posts, renderer: BootstrapLinkRenderer
+  .col-md-3
+    .input-group.search
+      %input#q.form-control{type: 'text', name: 'q', placeholder: 'Search blog' }
+      %span.input-group-btn
+        %button.btn.btn-default
+          %i.icon-search
+    %h3= t('.categories')
+    %ul.categories.list-unstyled
+      %li= link_to 'All', blog_path, class: "#{'active' unless @category}"
+      - @categories.each do |category|
+        %li= category_link(category, @category)
+:javascript
+$ ->
+  new Search($('#q'), "#{blog_path}");

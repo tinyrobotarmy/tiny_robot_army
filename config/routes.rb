@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :show]
   end
   get '/contact' => 'home#contact'
+  get '/blog', to: 'posts#index', as: :blog
+  get '/blog/:id', to: 'posts#show', as: :blog_entry
   root 'home#index'
 
   namespace :admin do

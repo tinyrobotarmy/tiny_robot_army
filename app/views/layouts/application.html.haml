@@ -14,13 +14,14 @@
         %li
           = link_to contact_link_label, '/contact'
         %li
-          = link_to blog_link_label, posts_path
+          = link_to blog_link_label, blog_path
         %li
           = sign_in_out current_user
         %li
           = admin_link current_user
     = message_box(yield(:message_box))
-    = yield
+    .container-fluid.outer
+      = yield
     %footer
       \&copy; 2011 - 2012 Tiny Robot Army
     :javascript

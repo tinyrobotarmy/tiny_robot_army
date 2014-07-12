@@ -18,13 +18,13 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   def create
-    @category = Category.create(params[:category])
+    @category = Category.create(category_params)
     respond_with :admin, @category
   end
 
   def update
     @category = Category.find(params[:id])
-    @category.update_attributes(params[:category])
+    @category.update_attributes(category_params)
     respond_with :admin, @category
   end
 
@@ -33,5 +33,10 @@ class Admin::CategoriesController < Admin::AdminController
     @category.destroy
 
     respond_with :admin, @category
+  end
+
+  private
+  def category_params
+    params.require(:category).permit(:title, :slug, :description)
   end
 end

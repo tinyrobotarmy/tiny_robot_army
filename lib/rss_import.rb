@@ -1,21 +1,19 @@
-require 'feedzirra'
+require 'feedjira'
 class RssImport
 
   def initialize(url)
-    @feed = Feedzirra::Feed.fetch_and_parse(url)
+    @feed = Feedjira::Feed.fetch_and_parse(url)
   end
 
   def import(importer)
-    @feed.entries.each do |entry|
-      post = create_post(entry, importer)
-    end
+    @feed.entries.each {|entry| create_post(entry, importer) }
   end
 
   def feed_loaded?
     !!@feed
   end
 
-  private 
+  private
   def create_post(entry, importer)
     post = Post.create(subject: entry.title, body: entry.content, author: importer)
     post.created_at = entry.published

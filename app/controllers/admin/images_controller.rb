@@ -2,7 +2,7 @@ class Admin::ImagesController < Admin::AdminController
   respond_to :html, :json
 
   def index
-    @images = Image.all
+    @images = Image.order('created_at DESC')
     respond_with [:admin, @images], :layout => !request.xhr?
   end
 
@@ -15,7 +15,7 @@ class Admin::ImagesController < Admin::AdminController
   end
 
   def create
-    @image = Image.create(params[:image])
+    @image = Image.create(images_params)
     respond_with :admin, @image
   end
 
@@ -24,5 +24,10 @@ class Admin::ImagesController < Admin::AdminController
     @image.destroy
 
     respond_with :admin, @image
+  end
+
+  private
+  def image_params
+    params.require(:image).permit(:file)
   end
 end

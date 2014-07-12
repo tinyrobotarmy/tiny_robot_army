@@ -16,7 +16,7 @@ class Admin::PostsController < Admin::AdminController
   end
 
   def create
-    respond_with :admin, @post = Post.create(params[:post].merge(author: current_user))
+    respond_with :admin, @post = Post.create(post_params.merge(author: current_user))
   end
 
   def edit
@@ -25,7 +25,7 @@ class Admin::PostsController < Admin::AdminController
 
   def update
     @post = Post.find(params[:id])
-    @post.update_attributes(params[:post])
+    @post.update_attributes(post_params)
     respond_with :admin, @post
   end
 
@@ -33,6 +33,11 @@ class Admin::PostsController < Admin::AdminController
     @post = Post.find(params[:id])
     @post.destroy
     respond_with(:admin, @post)
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:subject, :body, :author, :status_id, :category_ids)
   end
 
 end

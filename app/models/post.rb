@@ -1,9 +1,8 @@
 class Post < ActiveRecord::Base
-  attr_accessible :subject, :body, :author, :status_id, :category_ids
   validates_presence_of :subject, :body
 
   belongs_to :author, :class_name => 'User'
-  has_many :comments, order: 'created_at DESC'
+  has_many :comments
   has_and_belongs_to_many :categories
 
   before_validation :set_default_status, on: :create

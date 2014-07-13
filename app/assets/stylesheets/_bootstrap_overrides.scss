@@ -1,0 +1,7 @@
+.form-inputs label input[type=checkbox] {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  &.form-control {
+    margin-top: -7px;
+  }
+}

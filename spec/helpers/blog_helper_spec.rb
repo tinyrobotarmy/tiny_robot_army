@@ -32,7 +32,7 @@ describe BlogHelper do
     end
 
     it 'should render a count of entries with that category in the link' do
-      category.stub_chain(:posts, :count).and_return 12
+      allow(category).to receive_message_chain(:posts, :count).and_return 12
       expect(subject).to have_selector('a div.pull-right', text: '12')
     end
 

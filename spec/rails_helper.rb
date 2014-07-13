@@ -1,5 +1,17 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+require 'simplecov'
+SimpleCov.start 'rails' do
+  # bug: changing the coverage_dir here breaks coverage recording.
+  add_filter "/app/uploaders"
+  at_exit do
+    SimpleCov.result.format!
+    if SimpleCov.result.covered_percent < 100
+      $stderr.puts "Coverage not 100%, build failed."
+      exit 1
+    end
+  end
+end
 require 'rails_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'

@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def icon_link_label(icon_class, label)
+    content_tag(:i, '', class: icon_class) + content_tag(:div, label)
+  end
+
   #decide how this is going to go, probably config maybe settable in the dashboard
   def allow_comments
     true
@@ -11,7 +15,7 @@ module ApplicationHelper
   end
 
   def admin_link(user)
-    link_to(raw(dashboard_label), admin_dashboard_path) if user && user.admin?
+    link_to(raw(icon_link_label('icon-dashboard', t('.dashboard'))), admin_dashboard_path) if user && user.admin?
   end
 
   def message_box(message)
@@ -36,9 +40,5 @@ module ApplicationHelper
 
   def sign_out_label
     content_tag(:i, '', class: 'icon-signout') + content_tag(:div, t('.sign_out'))
-  end
-
-  def dashboard_label
-    content_tag(:i, '', class: 'icon-dashboard') + content_tag(:div, t('.dashboard'))
   end
 end

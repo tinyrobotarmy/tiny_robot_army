@@ -10,15 +10,15 @@
     %nav
       %ol.unstyled
         %li
-          = link_to raw(site_link_label), root_path
+          = link_to raw(icon_link_label('icon-globe', t('.site'))), root_path
         %li
-          = link_to raw(dashboard_link_label), admin_dashboard_path
+          = link_to raw(icon_link_label('icon-dashboard', t('.dashboard'))), admin_dashboard_path
         %li
-          = link_to raw(posts_link_label), admin_posts_path
+          = link_to raw(icon_link_label('icon-edit', t('.posts'))), admin_posts_path
         %li
-          = link_to raw(categories_link_label), admin_categories_path
+          = link_to raw(icon_link_label('icon-tasks', t('.categories'))), admin_categories_path
         %li
-          = link_to raw(images_link_label), admin_images_path
+          = link_to raw(icon_link_label('icon-picture', t('.images'))), admin_images_path
 
     = message_box(yield(:message_box))
     = yield

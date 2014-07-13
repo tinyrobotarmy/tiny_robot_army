@@ -5,6 +5,18 @@ describe ApplicationHelper, :type => :helper do
     allow(helper).to receive(:t).and_return 'xx'
   end
 
+  describe '#icon_link_label' do
+    subject { helper.icon_link_label('icon-class', 'label text') }
+
+    it 'should render an i tag with the class passed in' do
+      expect(subject).to have_selector("i.icon-class")
+    end
+
+    it 'should render an div with the text passed in' do
+      expect(subject).to have_selector("div", text: 'label text')
+    end
+  end
+
   describe '#allow_comments' do
     subject { helper.allow_comments }
     it { is_expected.to be_truthy }

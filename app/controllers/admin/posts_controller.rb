@@ -8,7 +8,7 @@ class Admin::PostsController < Admin::AdminController
 
   def show
     @new_comment = Comment.new()
-    respond_with :admin, @post = Post.find(params[:id])
+    respond_with :admin, @post = Post.find_by_slug(params[:id])
   end
 
   def new

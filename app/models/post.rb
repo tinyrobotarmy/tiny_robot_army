@@ -6,6 +6,14 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   before_validation :set_default_status, on: :create
+  after_save :create_slug, on: :create
+
+  scope :unpinned, -> { where(pinned: false) }
+  scope :pinned, -> { where(pinned: true) }
+
+  def to_param
+    slug || id
+  end
 
   def body=(value)
     write_attribute(:body, value.nil? ? nil : reject_invalid_input(value))
@@ -26,5 +34,9 @@ class Post < ActiveRecord::Base
 
   def set_default_status
     self.status_id = Status::DRAFT.id unless status_id
+  end
+
+  def create_slug
+    update_attribute :slug, "#{subject.parameterize}-#{id}" unless self.slug.present? || subject.nil?
   end
 end

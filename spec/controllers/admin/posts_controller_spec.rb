@@ -28,7 +28,7 @@ describe Admin::PostsController, :type => :controller do
   describe 'GET #show' do
     subject { get :show, id: post.id }
     let(:post) { double(:post, id: 356) }
-    before { allow(Post).to receive(:find).and_return post }
+    before { allow(Post).to receive(:find_by_slug).and_return post }
     it 'should make the post available for rendering' do
       subject
       expect(assigns(:post)).to eq(post)

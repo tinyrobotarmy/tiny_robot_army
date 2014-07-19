@@ -3,10 +3,12 @@ require "spec_helper"
 describe PostsController, :type => :controller do
   describe 'GET #index' do
     subject { get :index }
+    before do
+      3.times{ FactoryGirl.create :post }
+    end
     it 'should make paginated posts available for rendering' do
-      allow(Post).to receive_message_chain(:order, :paginate).and_return 'some posts'
       subject
-      expect(assigns(:posts)).to eql 'some posts'
+      expect(assigns(:posts).count).to eql 3
     end
 
     it 'should render the index template' do
@@ -16,9 +18,9 @@ describe PostsController, :type => :controller do
   end
 
   describe 'GET #show' do
-    subject { get :show, id: post.id }
-    let(:post) { instance_double('Post', id: 123) }
-    before{ allow(Post).to receive(:find).and_return post }
+    subject { get :show, id: post.to_param }
+    let(:post) { FactoryGirl.create :post }
+    before{ allow(Post).to receive(:find_by_slug).with('new-post-1').and_return post }
 
     it 'should make a new comment available for rendering' do
       subject

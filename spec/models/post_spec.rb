@@ -25,4 +25,25 @@ describe Post, :type => :model do
       expect(post.body).to eq('Some other text')
     end
   end
+
+  describe '#status=' do
+    subject { post.status = status }
+    let(:post) { Post.new }
+
+    context 'when the status is nil' do
+      let(:status) { nil }
+      it 'should set the status on the post to nil' do
+        subject
+        expect(post.status).to be_nil
+      end
+    end
+
+    context 'when the status is nil' do
+      let(:status) { Status::PUBLISHED }
+      it 'should set the status on the post' do
+        subject
+        expect(post.status).to eql Status::PUBLISHED
+      end
+    end
+  end
 end

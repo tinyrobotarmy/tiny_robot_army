@@ -16,6 +16,7 @@
 //= require message_box
 //= require slideout_form
 //= require wysiwyg_config
+//= require search
 
 
 Dropzone.options.newImage = {

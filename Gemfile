@@ -22,5 +22,7 @@ group :test, :development do
   gem 'capybara'
   gem 'shoulda-matchers', require: false
   gem 'simplecov', require: false
+  gem 'factory_girl_rails', require: false
+  gem 'ffaker', require: false
   gem 'byebug'
 end

@@ -15,6 +15,7 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'uglifier'
+gem 'textacular'
 
 group :test, :development do
   gem 'rspec-rails'

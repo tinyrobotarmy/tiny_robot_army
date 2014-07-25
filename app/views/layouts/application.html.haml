@@ -9,16 +9,12 @@
     = image_tag 'logo.png', alt: 'Tiny Robot Army'
     %nav
       %ol.unstyled
-        %li
-          = link_to icon_link_label('icon-home', t('.home')), '/'
-        %li
-          = link_to icon_link_label('icon-envelope', t('.contact_us')), '/contact'
-        %li
-          = link_to icon_link_label('icon-rss', t('.blog')), blog_path
-        %li
-          = sign_in_out current_user
-        %li
-          = admin_link current_user
+        %li= link_to icon_link_label('icon-home', t('.home')), '/'
+        %li= link_to icon_link_label('icon-envelope', t('.contact_us')), '/contact'
+        %li= link_to icon_link_label('icon-rss', t('.blog')), blog_path
+        %li= admin_link current_user
+        - if App.allow_sign_in
+          %li= sign_in_out current_user
     = message_box(yield(:message_box))
     .container-fluid.outer
       = yield

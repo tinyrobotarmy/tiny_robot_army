@@ -22,3 +22,6 @@ module TinyRobotArmy
     # config.i18n.default_locale = :de
   end
 end
+
+require './lib/extensions/hash'
+App = YAML.load(Pathname.new(__FILE__).dirname.join("application.yml").read).ostructify

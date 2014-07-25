@@ -1,16 +1,24 @@
-%table.table.table-striped
-  %thead
-    %tr
-      %th= t('.subject')
-      %th= t('.author')
-      %th= t('.comments')
-      %th
-  %tbody
-    - @posts.each do |post|
-      %tr
-        %td= post.subject
-        %td= post.author.full_name
-        %td= post.comments.count
-        %td
-          = link_to raw('<i class="icon-edit"></i>'), edit_admin_post_path(post)
-          = link_to raw('<i class="icon-trash"></i>'), admin_post_path(post), :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  .col-md-1
+  .col-md-10
+    %h1
+      Posts
+      %small.pull-right
+        = link_to 'Create', new_admin_post_path, class: 'btn btn-primary'
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= t('.subject')
+          %th= t('.author')
+          %th= t('.comments')
+          %th
+      %tbody
+        - @posts.each do |post|
+          %tr
+            %td= post.subject
+            %td= post.author.full_name
+            %td= post.comments.count
+            %td
+              = link_to raw('<i class="icon-edit"></i>'), edit_admin_post_path(post)
+              = link_to raw('<i class="icon-trash"></i>'), admin_post_path(post), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .col-md-1

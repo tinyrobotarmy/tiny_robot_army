@@ -20,7 +20,7 @@ class Admin::PostsController < Admin::AdminController
   end
 
   def edit
-    respond_with :admin, @post = Post.find(params[:id])
+    respond_with :admin, @post = Post.find_by_slug(params[:id])
   end
 
   def update

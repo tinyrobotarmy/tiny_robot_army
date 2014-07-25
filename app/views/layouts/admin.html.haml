@@ -21,7 +21,8 @@
           = link_to raw(icon_link_label('icon-picture', t('.images'))), admin_images_path
 
     = message_box(yield(:message_box))
-    = yield
+    .container-fluid.outer
+      = yield
     %footer
       \&copy; 2011 - 2012 Tiny Robot Army
     :javascript

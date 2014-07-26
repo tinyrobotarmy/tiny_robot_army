@@ -6,19 +6,22 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = image_tag 'logo.png', alt: 'Tiny Robot Army'
+    .top-bar
+    = image_tag 'logo.png', alt: 'Tiny Robot Army', class: 'logo'
     %nav
       %ol.unstyled
         %li
-          = link_to raw(icon_link_label('icon-globe', t('.site'))), root_path
+          = link_to raw(icon_link_label('globe', t('.site'))), root_path
         %li
-          = link_to raw(icon_link_label('icon-dashboard', t('.dashboard'))), admin_dashboard_path
+          = link_to raw(icon_link_label('edit', t('.posts'))), admin_posts_path
         %li
-          = link_to raw(icon_link_label('icon-edit', t('.posts'))), admin_posts_path
+          = link_to raw(icon_link_label('tasks', t('.categories'))), admin_categories_path
         %li
-          = link_to raw(icon_link_label('icon-tasks', t('.categories'))), admin_categories_path
+          = link_to raw(icon_link_label('picture-o', t('.images'))), admin_images_path
         %li
-          = link_to raw(icon_link_label('icon-picture', t('.images'))), admin_images_path
+          = link_to raw(icon_link_label('users', t('.users'))), admin_users_path
+        %li
+          = link_to(raw(sign_out_label), destroy_session_path(current_user), method: :delete)
 
     = message_box(yield(:message_box))
     .container-fluid.outer

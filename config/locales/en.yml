@@ -3,7 +3,7 @@ en:
     admin:
       site: 'Site'
     application:
-      dashboard: Dashboard
+      admin: Admin
       sign_out: 'Sign Out'
       sign_in: 'Sign In'
       home: home

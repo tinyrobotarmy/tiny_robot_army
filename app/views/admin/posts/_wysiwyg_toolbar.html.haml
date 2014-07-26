@@ -1,12 +1,12 @@
 .btn-toolbar.before-editable{"data-role" => "editor-toolbar", "data-target" => "#post_body_editor"}
   .btn-group
     %a.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :title => "Font"}
-      %i.icon-font
+      %i.fa.fa-font
       %b.caret
     %ul.dropdown-menu
   .btn-group
     %a.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :title => "Font Size"}
-      %i.icon-text-height>
+      %i.fa.fa-text-height>
       \ 
       %b.caret
     %ul.dropdown-menu
@@ -21,47 +21,47 @@
           %font{:size => "1"} Small
   .btn-group
     %a.btn.btn-default{"data-edit" => "bold", :title => "Bold (Ctrl/Cmd+B)"}
-      %i.icon-bold
+      %i.fa.fa-bold
     %a.btn.btn-default{"data-edit" => "italic", :title => "Italic (Ctrl/Cmd+I)"}
-      %i.icon-italic
+      %i.fa.fa-italic
     %a.btn.btn-default{"data-edit" => "strikethrough", :title => "Strikethrough"}
-      %i.icon-strikethrough
+      %i.fa.fa-strikethrough
     %a.btn.btn-default{"data-edit" => "underline", :title => "Underline (Ctrl/Cmd+U)"}
-      %i.icon-underline
+      %i.fa.fa-underline
   .btn-group
     %a.btn.btn-default{"data-edit" => "insertunorderedlist", :title => "Bullet list"}
-      %i.icon-list-ul
+      %i.fa.fa-list-ul
     %a.btn.btn-default{"data-edit" => "insertorderedlist", :title => "Number list"}
-      %i.icon-list-ol
+      %i.fa.fa-list-ol
     %a.btn.btn-default{"data-edit" => "outdent", :title => "Reduce indent (Shift+Tab)"}
-      %i.icon-indent-left
+      %i.fa.fa-indent
     %a.btn.btn-default{"data-edit" => "indent", :title => "Indent (Tab)"}
-      %i.icon-indent-right
+      %i.fa.fa-outdent
   .btn-group
     %a.btn.btn-default{"data-edit" => "justifyleft", :title => "Align Left (Ctrl/Cmd+L)"}
-      %i.icon-align-left
+      %i.fa.fa-align-left
     %a.btn.btn-default{"data-edit" => "justifycenter", :title => "Center (Ctrl/Cmd+E)"}
-      %i.icon-align-center
+      %i.fa.fa-align-center
     %a.btn.btn-default{"data-edit" => "justifyright", :title => "Align Right (Ctrl/Cmd+R)"}
-      %i.icon-align-right
+      %i.fa.fa-align-right
     %a.btn.btn-default{"data-edit" => "justifyfull", :title => "Justify (Ctrl/Cmd+J)"}
-      %i.icon-align-justify
+      %i.fa.fa-align-justify
   .btn-group
     %a.btn.btn-default{"data-toggle" => "dropdown", :title => "Hyperlink"}
-      %i.icon-link
+      %i.fa.fa-link
     .dropdown-menu.input-append
       %input.span2{"data-edit" => "createLink", :placeholder => "URL", :type => "text"}/
       %button.btn{:type => "button"} Add
     %a.btn.btn-default{"data-edit" => "unlink", :title => "Remove Hyperlink"}
-      %i.icon-cut
+      %i.fa.fa-cut
   .btn-group
     %a#pictureBtn.btn.btn-default{title: "Insert picture", href: '/admin/images', "data-edit" => "insertImage", "data-toggle" => "modal", "data-target" => "#image_modal"}
-      %i.icon-picture
+      %i.fa.fa-picture-o
   .btn-group
     %a.btn.btn-default{"data-edit" => "undo", :title => "Undo (Ctrl/Cmd+Z)"}
-      %i.icon-undo
+      %i.fa.fa-undo
     %a.btn.btn-default{"data-edit" => "redo", :title => "Redo (Ctrl/Cmd+Y)"}
-      %i.icon-repeat
+      %i.fa.fa-repeat
   %input#voiceBtn{"data-edit" => "inserttext", :type => "text", "x-webkit-speech" => ""}/
 #image_modal.modal.hide.fade{tabindex: "-1", role: "dialog", "aria-labelledby" => "myModalLabel", "aria-hidden" => "true"}
   .modal-header

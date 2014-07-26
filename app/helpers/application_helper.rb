@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def icon_link_label(icon_class, label)
-    content_tag(:i, '', class: icon_class) + content_tag(:div, label)
+    content_tag(:i, '', class: "fa fa-#{icon_class}") + content_tag(:div, label)
   end
 
   #decide how this is going to go, probably config maybe settable in the dashboard
@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def admin_link(user)
-    link_to(raw(icon_link_label('icon-dashboard', t('.dashboard'))), admin_dashboard_path) if user && user.admin?
+    link_to(raw(icon_link_label('fa fa-cogs', t('.admin'))), admin_dashboard_path) if user && user.admin?
   end
 
   def message_box(message)
@@ -35,10 +35,10 @@ module ApplicationHelper
 
   private
   def sign_in_label
-    content_tag(:i, '', class: 'icon-signin') + content_tag(:div, t('.sign_in'))
+    content_tag(:i, '', class: 'fa fa-sign-in') + content_tag(:div, t('.sign_in'))
   end
 
   def sign_out_label
-    content_tag(:i, '', class: 'icon-signout') + content_tag(:div, t('.sign_out'))
+    content_tag(:i, '', class: 'fa fa-sign-out') + content_tag(:div, t('.sign_out'))
   end
 end

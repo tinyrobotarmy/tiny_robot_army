@@ -1,37 +1,60 @@
 //= require bootstrap.min
 
-$primary_colour: #428bca;
+$primary_colour: #245682;
 $base_text_colour:#00413d;
 $error_colour:#c1272d;
 $notice_colour:#336600;
 $light_grey: #f8f8f8;
+$mid_grey: #eee;
 $grey: #ccc;
 $green:#090;
+$red: #ea0001;
 
 @import "compass/css3/transition";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 @import "bootstrap_overrides";
-@import "font-awesome";
 @import "message_box";
 @import "posts";
+@import "form";
 @import "dropzone";
 @import "wysiwyg";
+@import "font-awesome";
 
 body {
   position:relative;
   font-family: "Andale Mono", AndaleMono, monospace;
-  padding: 20px;
+  }
+
+.top-bar {
+  height: 85px;
+  width: 100%;
+  background-color: $mid_grey;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
+
+img.logo {
+  position: relative;
+  margin-top: 15px;
+  float: left;
+}
+
+.outer {
+  margin-top: 30px;
+}
+
 nav {
   display:inline-block;
   margin-left: 50px;
+  margin-top: 10px;
   li {
     display: inline-block;
     margin-left: 40px;
     a {
+      color: $primary_colour;
       position:relative;
-      color:#02103f;
       font-size: 32px;
       display:block;
       text-align:center;
@@ -41,7 +64,7 @@ nav {
       z-index: 10;
       &:hover{
         text-decoration:none;
-        // color:#fff;
+        color: lightent($primary_colour, 20%);
       }
     }
   }
@@ -57,8 +80,5 @@ h2 {
 footer {
   color:#ccc;
   text-align:center;
-}
-
-.after-editable {
-  margin-top: 15px;
+  margin-top: 40px;
 }

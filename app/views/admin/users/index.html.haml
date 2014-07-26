@@ -19,8 +19,8 @@
             %td= user.full_name
             %td= user.admin?
             %td
-              = link_to raw('<i class="icon-edit"></i>'), edit_admin_user_path(user)
-              = link_to raw('<i class="icon-trash"></i>'), admin_user_path(user), method: :delete,
+              = link_to raw('<i class="fa fa-edit"></i>'), edit_admin_user_path(user)
+              = link_to raw('<i class="fa fa-trash-o"></i>'), admin_user_path(user), method: :delete,
                         data: { confirm: 'Are you sure?' }
   .col-md-1
 

@@ -4,7 +4,7 @@
   = raw @post.body
 %ul.comments.unstyled
   %li.count
-    %i.icon-comments
+    %i.fa fa-comments
     %span.count= t('.comments', count: @post.comments.size)
   - @post.comments.each do |comment|
     = render partial: 'shared/comment', locals: { comment: comment }

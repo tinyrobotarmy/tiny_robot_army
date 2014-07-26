@@ -82,9 +82,8 @@ GEM
       loofah (~> 2.0.0)
       sax-machine (~> 0.2.1)
     ffaker (1.24.0)
-    font-awesome-sass-rails (3.0.2.2)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     fssm (0.2.10)
     haml (4.0.5)
       tilt
@@ -210,7 +209,7 @@ DEPENDENCIES
   factory_girl_rails
   feedjira
   ffaker
-  font-awesome-sass-rails
+  font-awesome-rails
   haml-rails
   jquery-rails
   mini_magick

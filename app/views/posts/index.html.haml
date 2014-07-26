@@ -1,4 +1,15 @@
 .row.blog
+  .col-md-3
+    .input-group.search
+      %input#q.form-control{type: 'text', name: 'q', placeholder: 'Search blog' }
+      %span.input-group-btn
+        %button.btn.btn-default
+          %i.fa.fa-search
+    %h3= t('.categories')
+    %ul.categories.list-unstyled
+      %li= link_to 'All', blog_path, class: "#{'active' unless @category}"
+      - @categories.each do |category|
+        %li= category_link(category, @category)
   .col-md-9
     -if @pinned.present?
       .pinnned
@@ -17,17 +28,7 @@
             .small= "BY #{post.author.full_name.upcase}"
           %p= raw post.body
       = will_paginate @posts, renderer: BootstrapLinkRenderer
-  .col-md-3
-    .input-group.search
-      %input#q.form-control{type: 'text', name: 'q', placeholder: 'Search blog' }
-      %span.input-group-btn
-        %button.btn.btn-default
-          %i.icon-search
-    %h3= t('.categories')
-    %ul.categories.list-unstyled
-      %li= link_to 'All', blog_path, class: "#{'active' unless @category}"
-      - @categories.each do |category|
-        %li= category_link(category, @category)
+
 :javascript
 $ ->
   new Search($('#q'), "#{blog_path}");

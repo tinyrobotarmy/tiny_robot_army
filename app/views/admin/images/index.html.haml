@@ -1,9 +1,13 @@
-= simple_form_for [:admin, Image.new], html: {class: 'dropzone'} do |f|
-  = f.input :file, as: :file, wrapper_html: {class: 'fallback'}
-.container
-  - @images.each_slice(4) do |images_row|
-    .row
-      - images_row.each do |image|
-        .col-lg-3
-          %a.thumbnail{href: '#'}
-            = image_tag image.file.thumb.url
+.row
+  .col-md-1
+  .col-md-10
+    = simple_form_for [:admin, Image.new], html: {class: 'dropzone'} do |f|
+      = f.input :file, as: :file, wrapper_html: {class: 'fallback'}
+    .container
+      - @images.each_slice(4) do |images_row|
+        .row
+          - images_row.each do |image|
+            .col-lg-3
+              %a.thumbnail{href: '#'}
+                = image_tag image.file.thumb.url
+  .col-md-1

@@ -1,0 +1,26 @@
+.row
+  .col-md-1
+  .col-md-10
+    %h1
+      Users
+      %small.pull-right
+        = link_to 'New User', new_admin_user_path, class: 'btn btn-primary'
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= t('.email')
+          %th= t('.name')
+          %th= t('.admin')
+          %th
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= link_to user.email, admin_user_path(user)
+            %td= user.full_name
+            %td= user.admin?
+            %td
+              = link_to raw('<i class="icon-edit"></i>'), edit_admin_user_path(user)
+              = link_to raw('<i class="icon-trash"></i>'), admin_user_path(user), method: :delete,
+                        data: { confirm: 'Are you sure?' }
+  .col-md-1
+

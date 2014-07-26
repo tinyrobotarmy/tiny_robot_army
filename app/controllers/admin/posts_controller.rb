@@ -24,7 +24,7 @@ class Admin::PostsController < Admin::AdminController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug(params[:id])
     @post.update_attributes(post_params)
     respond_with :admin, @post
   end

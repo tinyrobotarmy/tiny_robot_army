@@ -75,7 +75,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'GET #edit' do
-    subject { get :edit, id: post.id }
+    subject { get :edit, id: post.to_param }
     let(:post) { Post.create!(valid_attributes)}
     it 'should make the post available for editing' do
       subject
@@ -89,7 +89,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'PUT #update' do
-    subject { put :update, id: post.id, post: attributes }
+    subject { put :update, id: post.to_param, post: attributes }
     let(:post) { Post.create!(valid_attributes)}
     context 'with valid attributes' do
       let(:attributes) { valid_attributes(subject: 'new subject') }
@@ -115,7 +115,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'DELETE #destroy' do
-    subject { delete :destroy, id: post.id }
+    subject { delete :destroy, id: post.to_param }
     let(:post) { Post.new(id: 156) }
     before { allow(Post).to receive(:find).and_return post }
 

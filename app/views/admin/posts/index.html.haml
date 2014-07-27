@@ -4,7 +4,7 @@
     %h1
       Posts
       %small.pull-right
-        = link_to 'Create', new_admin_post_path, class: 'btn btn-primary'
+        = link_to 'New Post', new_admin_post_path, class: 'btn btn-primary'
     %table.table.table-striped
       %thead
         %tr
@@ -15,7 +15,7 @@
       %tbody
         - @posts.each do |post|
           %tr
-            %td= post.subject
+            %td= link_to post.subject, admin_post_path(post)
             %td= post.author.full_name
             %td= post.comments.count
             %td

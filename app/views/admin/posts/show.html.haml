@@ -1,10 +1,19 @@
-%h2= @post.subject
-= link_to 'back to posts', admin_posts_path, class: 'pull-right'
-%p
-  = raw @post.body
-%ul.comments.unstyled
-  %li.count
-    %i.fa fa-comments
-    %span.count= t('.comments', count: @post.comments.size)
-  - @post.comments.each do |comment|
-    = render partial: 'shared/comment', locals: { comment: comment }
+.row.blog
+  .col-md-2
+  .col-md-8
+    %h1 Post
+    %h2
+      .pull-left.date
+        .day= @post.created_at.day
+        .month= @post.created_at.strftime('%B').upcase
+        .year= @post.created_at.year
+      .subject=@post.subject
+      .small= "BY #{@post.author.full_name.upcase}"
+    %p= raw @post.body
+    %ul.comments.unstyled
+      %li.count.list-unstyled
+        %i.fa.fa-comments
+        %span.count= t('.comments', count: @post.comments.size)
+      - @post.comments.each do |comment|
+        = render partial: 'shared/comment', locals: { comment: comment }
+  .col-md-2

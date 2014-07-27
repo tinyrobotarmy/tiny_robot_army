@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 gem 'rails', '4.1.0'
 gem 'haml-rails'
@@ -26,3 +27,5 @@ group :test, :development do
   gem 'ffaker', require: false
   gem 'byebug'
 end
+
+gem 'rails_12factor', group: :production #needed for Heroku

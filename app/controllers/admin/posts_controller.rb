@@ -37,7 +37,7 @@ class Admin::PostsController < Admin::AdminController
 
   private
   def post_params
-    params.require(:post).permit(:subject, :body, :author, :status_id, :category_ids)
+    params.require(:post).permit(:subject, :body, :author, :status_id, :pinned, { category_ids: [] })
   end
 
 end

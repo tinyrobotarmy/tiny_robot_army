@@ -9,7 +9,7 @@ describe ApplicationHelper, :type => :helper do
     subject { helper.icon_link_label('icon-class', 'label text') }
 
     it 'should render an i tag with the class passed in' do
-      expect(subject).to have_selector("i.icon-class")
+      expect(subject).to have_selector("i.fa.fa-icon-class")
     end
 
     it 'should render an div with the text passed in' do

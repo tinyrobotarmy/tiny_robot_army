@@ -4,11 +4,12 @@ describe PostsController, :type => :controller do
   describe 'GET #index' do
     subject { get :index }
     before do
-      3.times{ FactoryGirl.create :post }
+      2.times{ FactoryGirl.create :published_post }
+      FactoryGirl.create :post
     end
-    it 'should make paginated posts available for rendering' do
+    it 'should make paginated list of published posts available for rendering' do
       subject
-      expect(assigns(:posts).count).to eql 3
+      expect(assigns(:posts).count).to eql 2
     end
 
     it 'should render the index template' do

@@ -55,10 +55,10 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'POST #create' do
-    subject { post :create, post: post_attributes }
+    subject { post :create, all_attributes }
 
     context 'when attributes are invalid' do
-      let(:post_attributes) { {subject: 'awesome post'} }
+      let(:all_attributes) { {post: {subject: 'awesome post'}} }
       it 'should re-render the new template' do
         subject
         expect(response).to render_template(:new)
@@ -66,10 +66,25 @@ describe Admin::PostsController, :type => :controller do
     end
 
     context 'when attributes are valid' do
-      let(:post_attributes) { valid_attributes }
+      let(:all_attributes) { {post: valid_attributes} }
       it 'should be a success' do
         subject
         expect(response).to redirect_to admin_post_path(assigns(:post))
+      end
+
+      context 'and the save as draft button has been pushed' do
+        let(:all_attributes) { {commit: 'Save as Draft',post: valid_attributes} }
+        it 'should save the post in draft status' do
+          subject
+          expect(assigns(:post).status).to eql Status::DRAFT
+        end
+      end
+      context 'and the save and publish button has been pushed' do
+        let(:all_attributes) { {commit: 'Save and Publish', post: valid_attributes} }
+        it 'should save the post in published status' do
+          subject
+          expect(assigns(:post).status).to eql Status::PUBLISHED
+        end
       end
     end
   end
@@ -89,24 +104,52 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'PUT #update' do
-    subject { put :update, id: post.to_param, post: attributes }
+    subject { put :update, id: post.to_param, commit: commit_message, post: attributes }
     let(:post) { Post.create!(valid_attributes)}
     context 'with valid attributes' do
       let(:attributes) { valid_attributes(subject: 'new subject') }
+      context 'and the save as draft button has been pushed' do
+        let(:commit_message) { 'Save as Draft'}
 
-      it 'should update the post' do
-        subject
-        expect(post.reload.subject).to eq('new subject')
+        it 'should update the post' do
+          subject
+          expect(post.reload.subject).to eq('new subject')
+        end
+
+        it 'should redirect to the post show' do
+          subject
+          expect(response).to redirect_to admin_post_path(post)
+        end
+
+        it 'should be in draft status' do
+          subject
+          expect(assigns(:post).status).to eql Status::DRAFT
+        end
       end
 
-      it 'should redirect to the post show' do
-        subject
-        expect(response).to redirect_to admin_post_path(post)
+      context 'and the save and Publish button has been pushed' do
+        let(:commit_message) { 'Save and Publish'}
+
+        it 'should update the post' do
+          subject
+          expect(post.reload.subject).to eq('new subject')
+        end
+
+        it 'should redirect to the post show' do
+          subject
+          expect(response).to redirect_to admin_post_path(post)
+        end
+
+        it 'should be in draft status' do
+          subject
+          expect(assigns(:post).status).to eql Status::PUBLISHED
+        end
       end
     end
 
     context 'with invalid attributes' do
       let(:attributes) { {subject: ''} }
+      let(:commit_message) { 'Save and Publish'}
       it 'should render the edit template' do
         subject
         expect(response).to render_template :edit

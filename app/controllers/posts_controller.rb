@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   private
   def post_query
     @category = Category.find_by(id: params[:category])
-    query = @category ? @category.posts.unpinned : Post.unpinned
+    query = @category ? @category.posts.published.unpinned : Post.published.unpinned
     query = query.basic_search(params[:q]) if params[:q]
     query
   end

@@ -10,6 +10,7 @@
         %tr
           %th= t('.subject')
           %th= t('.author')
+          %th= t('.status')
           %th= t('.comments')
           %th
       %tbody
@@ -17,6 +18,7 @@
           %tr
             %td= link_to post.subject, admin_post_path(post)
             %td= post.author.full_name
+            %td= post.status.title
             %td= post.comments.count
             %td
               = link_to raw('<i class="fa fa-edit"></i>'), edit_admin_post_path(post)

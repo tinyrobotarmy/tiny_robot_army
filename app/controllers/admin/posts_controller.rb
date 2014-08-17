@@ -16,7 +16,9 @@ class Admin::PostsController < Admin::AdminController
   end
 
   def create
-    respond_with :admin, @post = Post.create(post_params.merge(author: current_user))
+    attributes = post_params.merge(author: current_user)
+    attributes.merge!(status_id: Status::PUBLISHED.id) if params[:commit] == 'Save and Publish'
+    respond_with :admin, @post = Post.create(attributes)
   end
 
   def edit
@@ -25,7 +27,10 @@ class Admin::PostsController < Admin::AdminController
 
   def update
     @post = Post.find_by_slug(params[:id])
-    @post.update_attributes(post_params)
+    attributes = post_params
+    attributes.merge!(status_id: Status::PUBLISHED.id) if params[:commit] == 'Save and Publish'
+    logger.debug "ATT:#{attributes}::#{params[:commit]}"
+    @post.update_attributes(attributes)
     respond_with :admin, @post
   end
 

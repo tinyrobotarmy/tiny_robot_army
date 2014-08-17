@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
 
   scope :unpinned, -> { where(pinned: false) }
   scope :pinned, -> { where(pinned: true) }
+  scope :published, -> { where(status_id: Status::PUBLISHED.id) }
 
   def to_param
     slug || id

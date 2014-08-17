@@ -27,12 +27,12 @@ describe BlogHelper do
 
     it 'should render a link with the title of the category as the label' do
       expect(subject).to have_selector('a') do |element|
-        expect(element.text).to match /Super Stuff/
+        expect(element.text).to match(/Super Stuff/)
       end
     end
 
     it 'should render a count of entries with that category in the link' do
-      allow(category).to receive_message_chain(:posts, :count).and_return 12
+      allow(category).to receive_message_chain(:posts, :published, :count).and_return 12
       expect(subject).to have_selector('a div.pull-right', text: '12')
     end
 

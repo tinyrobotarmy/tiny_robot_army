@@ -4,7 +4,7 @@ module BlogHelper
   end
 
   def category_link(category, selected_category)
-    label = category.title + content_tag(:div, category.posts.count, class: 'pull-right')
+    label = category.title + content_tag(:div, category.posts.published.count, class: 'pull-right')
     options = {}
     options.merge!(class: 'active') if category == selected_category
     link_to raw(label), blog_path(category: category.id), options

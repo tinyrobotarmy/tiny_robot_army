@@ -8,5 +8,6 @@
   .form-control#post_body_editor{ contenteditable: true }
     = raw post.body
   .form-group.after-editable
-    = post_form.button :submit, class: 'btn btn-success'
+    = post_form.button :submit, 'Save as Draft', class: 'btn btn-success'
+    = post_form.button :submit, 'Save and Publish', class: 'btn btn-success'
     = link_to t('.cancel'), admin_posts_path, class: 'btn btn-default cancel', id: 'cancel_update'

@@ -23,3 +23,6 @@ Dropzone.options.newImage = {
   dictDefaultMessage: '<i class="icon-upload"></i> <div>Click to upload or drag files into this box</div>',
   paramName: 'image[file]'
 }
+$(document).ready(function(){
+  window.messageBox = new MessageBox($('.message-box'));
+});

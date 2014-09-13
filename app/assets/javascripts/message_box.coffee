@@ -5,11 +5,11 @@ class @MessageBox
     @open()  if @messageBox.children().length > 1
 
   close: ->
-    @messageBox.fadeOut 400
+    @messageBox.slideUp "slow"
     false
 
   open: ->
-    @messageBox.fadeIn 400
+    @messageBox.slideDown 400
 
   showErrorMessage: (message) ->
     @showMessage message, "alert"
@@ -21,4 +21,3 @@ class @MessageBox
     @messageBox.find("div").remove()
     @messageBox.append "<div class=\"" + cssClass + "\">" + message + "</div>"
     @open()
-    @messageBox.delay(2000).fadeOut "slow"

@@ -1,13 +1,6 @@
 .message-box {
   display:none;
-  position:absolute;
-  top:20px;
-  left:255px;
-  border:solid 3px #6b6b6b;
-  z-index:500;
-  @include border-radius(3px);
-  @include box-shadow(#ccc 0 1px 3px);
-  outline: 0;
+  text-align: center;
   div {
     padding:0.75em;
     margin:0;
@@ -21,13 +14,11 @@
 .notice {
   background-color:#D1EED1;
   color:$notice_colour;
-  width: 500px;
   @include border-radius(3px);
 }
 
 .alert, #error_explanation {
   background-color: #fddfde;
-  width: 500px;
   @include border-radius(3px);
 }
 

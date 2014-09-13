@@ -9,4 +9,23 @@
       .subject=@post.subject
       .small= "BY #{@post.author.full_name.upcase}"
     %p= raw @post.body
+    - if allow_comments
+      .comments-heading
+        .comment-count
+          %i.fa.fa-comments
+          %span.count= t('shared.post.comments', count: @post.comments.size)
+        = link_to(raw(t('shared.post.comment')), '#', class: 'btn btn-primary add-comment') if current_user
+      %ul.comments.list-unstyled
+        - @post.comments.each do |comment|
+          = render partial: 'shared/comment', locals: {comment: comment}
+        %li.form
+          = simple_form_for [@post, @post.comments.build], html: { style: 'display:none;'} do |comment_form|
+            = comment_form.input :body, label: t('.body'), input_html: {class: 'form-control', rows: 5}
+            .actions
+              = comment_form.button :submit, class: 'btn btn-primary'
+              = link_to t('shared.post.cancel'), '#', class: 'btn btn-default cancel'
   .col-md-1
+:javascript
+  $(document).ready(function () {
+    $('form').slideoutForm({list: $('ul.comments'), control:$('.add-comment'), cancel:$('.cancel')});
+  });

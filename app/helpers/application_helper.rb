@@ -41,4 +41,8 @@ module ApplicationHelper
   def sign_out_label
     content_tag(:i, '', class: 'fa fa-sign-out') + content_tag(:div, t('.sign_out'))
   end
+
+  def sign_up_label
+    content_tag(:i, '', class: 'fa fa-pencil-square-o') + content_tag(:div, t('.sign_up'))
+  end
 end

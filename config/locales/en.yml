@@ -30,6 +30,7 @@ en:
     comment:
       author: "Posted %{ago} ago by %{author}"
     post:
+      comment: <i class="fa fa-plus"></i> COMMENT
       comments:
         one: "1 Comment"
         other: "%{count} Comments"

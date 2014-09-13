@@ -1,3 +1,3 @@
-allow_sign_in: false
-allow_sign_up: false
+allow_sign_in: true
+allow_sign_up: true
 alow_comments: true

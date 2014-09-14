@@ -15,7 +15,10 @@
         .comment-count
           %i.fa.fa-comments
           %span.count= t('shared.post.comments', count: @post.comments.size)
-        = link_to(raw(t('shared.post.comment')), '#', class: 'btn btn-primary add-comment') if current_user
+        -if current_user
+          = link_to(raw(t('shared.post.comment')), '#', class: 'btn btn-primary add-comment')
+        -else
+          =link_to raw('<i class="fa fa-pencil-square-o"></i> SIGN UP TO COMMENT'), new_user_registration_path, class: 'btn btn-primary'
       %ul.comments.list-unstyled
         - @post.comments.each do |comment|
           = render partial: 'shared/comment', locals: {comment: comment}

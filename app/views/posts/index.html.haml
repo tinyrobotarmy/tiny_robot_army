@@ -26,7 +26,12 @@
               .year= post.created_at.year
             .subject= link_to post.subject, blog_entry_path(post)
             .small= "BY #{post.author.full_name.upcase}"
-          %p= raw post.body
+          %p= raw truncate_html(post.body, length: 400, omission: link_to('...read more', blog_entry_path(post)))
+          - if allow_comments
+            .comments-heading
+              .comment-count
+                %i.fa.fa-comments
+                %span.count= t('shared.post.comments', count: post.comments.size)
       = will_paginate @posts, renderer: BootstrapLinkRenderer
 
 :javascript

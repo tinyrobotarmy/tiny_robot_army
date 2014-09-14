@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'uglifier'
 gem 'textacular'
+gem 'truncate_html'
 
 group :test, :development do
   gem 'rspec-rails'

@@ -26,3 +26,4 @@ Dropzone.options.newImage = {
 $(document).ready(function(){
   window.messageBox = new MessageBox($('.message-box'));
 });
+

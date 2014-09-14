@@ -1,6 +1,7 @@
 .row.blog
   .col-md-1
   .col-md-10
+    .back-link= link_to raw('<i class="fa fa-arrow-circle-left"></i> back to blog'), blog_path
     %h2
       .pull-left.date
         .day= @post.created_at.day

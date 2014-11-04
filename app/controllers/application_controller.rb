@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :admin]
   end
+
+  def require_user!
+    render file: "#{Rails.root}/public/422", format: :html, status: 422 unless current_user.present?
+  end
 end

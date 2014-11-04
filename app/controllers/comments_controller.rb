@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   respond_to :html
+  before_filter :require_user!, only: [:create]
+
   def create
     @post = Post.find_by_slug!(params[:post_id])
     @comment = @post.comments.create(comment_params.merge(author: current_user))

@@ -11,8 +11,7 @@
     %nav
       %ol.unstyled
         %li= link_to icon_link_label('home', t('.home')), '/'
-        %li= link_to icon_link_label('envelope', t('.contact_us')), '/contact'
-        %li= link_to icon_link_label('rss', t('.blog')), blog_path
+        %li= link_to icon_link_label('users', t('.about')), '/about'
         - if App.allow_sign_in
           %li= raw sign_in_out(current_user)
         - if App.allow_sign_up && ! current_user

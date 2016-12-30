@@ -1,14 +1,13 @@
 en:
   layouts:
     admin:
-      site: 'Site'
+      site: 'site'
     application:
-      admin: Admin
-      sign_out: 'Sign Out'
-      sign_in: 'Sign In'
+      admin: admin
+      sign_out: 'sign Out'
+      sign_in: 'sign In'
       home: home
-      contact_us: Contact Us
-      blog: Blog
+      about: about
   posts:
     index:
       page_title: All Entries

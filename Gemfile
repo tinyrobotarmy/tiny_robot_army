@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.1.2'
+ruby '2.3.3'
 
-gem 'rails', '4.1.0'
+gem 'rails'
 gem 'haml-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'compass-rails'

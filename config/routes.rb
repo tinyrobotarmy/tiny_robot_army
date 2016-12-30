@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show] do
     resources :comments, only: [:create, :show]
   end
-  get '/contact' => 'home#contact'
+  get '/about' => 'home#about'
   get '/blog', to: 'posts#index', as: :blog
   get '/blog/:id', to: 'posts#show', as: :blog_entry
-  root 'home#index'
+  root 'posts#index'
 
   namespace :admin do
     get 'dashboard' => 'admin#dashboard', as: :dashboard

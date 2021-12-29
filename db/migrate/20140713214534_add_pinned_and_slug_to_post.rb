@@ -1,4 +1,4 @@
-class AddPinnedAndSlugToPost < ActiveRecord::Migration
+class AddPinnedAndSlugToPost < ActiveRecord::Migration[6.1]
   def up
     execute 'delete from posts'
     add_column :posts, :pinned, :boolean, null: false, default: false

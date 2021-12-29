@@ -19,7 +19,7 @@ describe PostsController, :type => :controller do
   end
 
   describe 'GET #show' do
-    subject { get :show, id: post.to_param }
+    subject { get :show, params: { id: post.to_param } }
     let(:post) { FactoryGirl.create :post }
     before{ allow(Post).to receive(:find_by_slug).with('new-post-1').and_return post }
 

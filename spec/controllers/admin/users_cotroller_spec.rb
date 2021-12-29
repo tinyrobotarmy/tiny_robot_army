@@ -26,7 +26,7 @@ describe Admin::UsersController, :type => :controller do
   end
 
   describe 'GET #show' do
-    subject { get :show, id: user.id }
+    subject { get :show, params: { id: user.id } }
     let(:user) { double(:user, id: 356) }
     before { allow(User).to receive(:find).and_return user }
     it 'should make the user available for rendering' do
@@ -55,7 +55,7 @@ describe Admin::UsersController, :type => :controller do
   end
 
   describe 'POST #create' do
-    subject { post :create, user: user_attributes }
+    subject { post :create, params: { user: user_attributes } }
 
     context 'when attributes are invalid' do
       let(:user_attributes) { {first_name: 'awesome user'} }
@@ -75,7 +75,7 @@ describe Admin::UsersController, :type => :controller do
   end
 
   describe 'GET #edit' do
-    subject { get :edit, id: user.id }
+    subject { get :edit, params: { id: user.id } }
     let(:user) { User.create!(valid_attributes)}
     it 'should make the user available for editing' do
       subject
@@ -89,7 +89,7 @@ describe Admin::UsersController, :type => :controller do
   end
 
   describe 'PUT #update' do
-    subject { put :update, id: user.id, user: attributes }
+    subject { put :update, params: { id: user.id, user: attributes } }
     let(:user) { User.create!(valid_attributes)}
     context 'with valid attributes' do
       let(:attributes) { valid_attributes(first_name: 'new name') }
@@ -115,7 +115,7 @@ describe Admin::UsersController, :type => :controller do
   end
 
   describe 'DELETE #destroy' do
-    subject { delete :destroy, id: user.id }
+    subject { delete :destroy, params: { id: user.id } }
     let(:user) { User.new(id: 156) }
     before { allow(User).to receive(:find).and_return user }
 

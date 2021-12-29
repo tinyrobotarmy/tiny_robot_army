@@ -1,4 +1,4 @@
-class CreatePosts < ActiveRecord::Migration
+class CreatePosts < ActiveRecord::Migration[6.1]
   def change
     create_table :posts do |table|
       table.string :subject

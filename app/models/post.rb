@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   before_validation :set_default_status, on: :create
-  after_save :create_slug, on: :create
+  after_create :create_slug
 
   scope :unpinned, -> { where(pinned: false) }
   scope :pinned, -> { where(pinned: true) }

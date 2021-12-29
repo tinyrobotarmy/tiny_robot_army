@@ -30,7 +30,7 @@ class Admin::PostsController < Admin::AdminController
     attributes = post_params
     attributes.merge!(status_id: Status::PUBLISHED.id) if params[:commit] == 'Save and Publish'
     logger.debug "ATT:#{attributes}::#{params[:commit]}"
-    @post.update_attributes(attributes)
+    @post.update(attributes)
     respond_with :admin, @post
   end
 

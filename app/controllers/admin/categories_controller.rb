@@ -24,7 +24,7 @@ class Admin::CategoriesController < Admin::AdminController
 
   def update
     @category = Category.find(params[:id])
-    @category.update_attributes(category_params)
+    @category.update(category_params)
     respond_with :admin, @category
   end
 

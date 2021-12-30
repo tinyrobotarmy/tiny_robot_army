@@ -1,9 +1,9 @@
 /* The MIT License */
 
+@import "colours";
 .dropzone {
   position: relative;
   border: 5px dashed $grey;
-  @include border-radius(10px);
   background: #fff;
   padding: 1em;
   margin-top: 1em;
@@ -61,7 +61,6 @@
     opacity: 0;
   }
   .preview {
-    @include box-shadow(rgba(0, 0, 0, 0.16) 1px 1px 4px);
     font-size: 14px;
   }
 }
@@ -209,9 +208,6 @@
 .dropzone .preview .error-mark, .dropzone-previews .preview .error-mark, .dropzone .preview .success-mark, .dropzone-previews .preview .success-mark {
   display: block;
   opacity: 0;
-  @include transition-property(opacity);
-  @include transition-duration(0.4s);
-  @include transition-timing-function(ease-out);
   background-image: url("spritemap.png");
   background-repeat: no-repeat;
 }
@@ -272,17 +268,11 @@
 .dropzone .preview.success .progress, .dropzone-previews .preview.success .progress {
   display: block;
   opacity: 0 ;
-  @include transition-property(opacity);
-  @include transition-duration(0.4s);
-  @include transition-timing-function(ease-in-out);
 }
 
 .dropzone .preview .error-message, .dropzone-previews .preview .error-message {
   display: block;
   opacity: 0;
-  @include transition-property(opacity);
-  @include transition-duration(0.3s);
-  @include transition-timing-function(ease-in-out);
 }
 
 .dropzone .preview:hover.error .error-message, .dropzone-previews .preview:hover.error .error-message {

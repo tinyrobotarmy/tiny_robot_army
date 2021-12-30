@@ -6,8 +6,6 @@
   border: 1px solid rgb(204, 204, 204);
   padding: 4px;
   box-sizing: content-box;
-  @include box-shadow(rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset);
-  @include border-radius(3px);
   overflow: scroll;
   outline: none;
 }

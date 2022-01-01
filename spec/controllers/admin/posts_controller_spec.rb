@@ -26,7 +26,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'GET #show' do
-    subject { get :show, id: post.id }
+    subject { get :show, params: { id: post.id } }
     let(:post) { double(:post, id: 356) }
     before { allow(Post).to receive(:find_by_slug).and_return post }
     it 'should make the post available for rendering' do
@@ -55,7 +55,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'POST #create' do
-    subject { post :create, all_attributes }
+    subject { post :create, params: all_attributes }
 
     context 'when attributes are invalid' do
       let(:all_attributes) { {post: {subject: 'awesome post'}} }
@@ -90,7 +90,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'GET #edit' do
-    subject { get :edit, id: post.to_param }
+    subject { get :edit, params: { id: post.to_param } }
     let(:post) { Post.create!(valid_attributes)}
     it 'should make the post available for editing' do
       subject
@@ -104,7 +104,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'PUT #update' do
-    subject { put :update, id: post.to_param, commit: commit_message, post: attributes }
+    subject { put :update, params: { id: post.to_param, commit: commit_message, post: attributes } }
     let(:post) { Post.create!(valid_attributes)}
     context 'with valid attributes' do
       let(:attributes) { valid_attributes(subject: 'new subject') }
@@ -158,7 +158,7 @@ describe Admin::PostsController, :type => :controller do
   end
 
   describe 'DELETE #destroy' do
-    subject { delete :destroy, id: post.to_param }
+    subject { delete :destroy, params: { id: post.to_param } }
     let(:post) { Post.new(id: 156) }
     before { allow(Post).to receive(:find).and_return post }
 

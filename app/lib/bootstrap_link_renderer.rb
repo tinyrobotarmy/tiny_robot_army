@@ -1,4 +1,4 @@
-class BootstrapLinkRenderer < WillPaginate::ActionView::LinkRenderer
+class BootstrapLinkRenderer < WillPaginate::ViewHelpers::LinkRenderer
   protected
 
   def html_container(html)

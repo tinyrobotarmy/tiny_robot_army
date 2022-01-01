@@ -1,18 +1,6 @@
 //= require bootstrap.min
 
-$primary_colour: #245682;
-$base_text_colour:#00413d;
-$error_colour:#c1272d;
-$notice_colour:#336600;
-$light_grey: #f8f8f8;
-$mid_grey: #eee;
-$grey: #ccc;
-$green:#090;
-$red: #ea0001;
-
-@import "compass/css3/transition";
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
+@import "colours";
 @import "bootstrap_overrides";
 @import "message_box";
 @import "posts";
@@ -24,7 +12,7 @@ $red: #ea0001;
 body {
   position:relative;
   font-family: "Andale Mono", AndaleMono, monospace;
-  font-size: 3em;
+  // font-size: 3em;
 }
 
 @media (min-width: 768px) and (orientation: landscape) {

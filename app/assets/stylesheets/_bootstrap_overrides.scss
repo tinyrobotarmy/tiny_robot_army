@@ -1,7 +1,14 @@
-.form-inputs label input[type=checkbox] {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  &.form-control {
-    margin-top: -7px;
+.form-inputs .user_remember_me {
+  label {
+    padding-left: 28px;
+    input[type=checkbox] {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      &.form-control {
+        height: 20px;
+        margin-top: 0px;
+        margin-left: -478px;
+      }
+    }
   }
 }

@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.6.9'
 
 gem 'rails'
 gem 'haml-rails'
-gem 'sass-rails', '~> 4.0.3'
-gem 'compass-rails'
+gem 'sass-rails'
 gem 'font-awesome-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
@@ -18,6 +17,7 @@ gem 'mini_magick'
 gem 'uglifier'
 gem 'textacular'
 gem 'truncate_html'
+gem 'httparty'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -26,6 +26,7 @@ group :test, :development do
   gem 'simplecov', require: false
   gem 'factory_girl_rails', require: false
   gem 'ffaker', require: false
+  gem 'rails-controller-testing'
   gem 'byebug'
 end
 

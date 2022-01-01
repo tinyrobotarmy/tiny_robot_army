@@ -2,7 +2,8 @@ require 'feedjira'
 class RssImport
 
   def initialize(url)
-    @feed = Feedjira::Feed.fetch_and_parse(url)
+    xml = HTTParty.get(url).body
+    @feed = Feedjira.parse(xml)
   end
 
   def import(importer)

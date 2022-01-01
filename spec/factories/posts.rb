@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :post do
-    subject { Faker::Lorem.sentence }
-    body { Faker::Lorem.paragraph }
+    subject { FFaker::Lorem.sentence }
+    body { FFaker::Lorem.paragraph }
     author {|author| author.association(:user) }
 
     factory :pinned_post do

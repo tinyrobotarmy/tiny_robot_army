@@ -35,5 +35,6 @@
       = will_paginate @posts, renderer: BootstrapLinkRenderer
 
 :javascript
-  $ ->
+  $(document).ready(function(){
     new Search($('#q'), "#{blog_path}");
+  })

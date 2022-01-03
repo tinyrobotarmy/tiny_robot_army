@@ -12,12 +12,12 @@
 body {
   position:relative;
   font-family: "Andale Mono", AndaleMono, monospace;
-  // font-size: 3em;
+  // font-size: 1rem;
 }
 
 @media (min-width: 768px) and (orientation: landscape) {
   body {
-    font-size: 1.5em;
+    // font-size: 1.5em;
   }
 }
 
